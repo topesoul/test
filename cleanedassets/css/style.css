@@ -4,58 +4,80 @@
     --primary-color: #30C9C6;
     --secondary-color: #207178;
     --text-color: #333;
-    --button-hover-color: #3C91E6;
+    --background-color: #f4f4f4;
+    --hover-color: #3C91E6;
+    --link-hover-effect: underline 2px rgba(255, 255, 255, 0.75);
+    --transition-speed: 0.3s;
+    --footer-height: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body, html {
-    margin: 0;
-    padding: 0;
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
-    background-color: #fff;
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+a, button {
+    transition: color var(--transition-speed), background-color var(--transition-speed);
+}
+
+a:focus, button:focus {
+    outline: 3px solid var(--hover-color);
+    outline-offset: 3px;
 }
 
 header {
     background-color: var(--primary-color);
-    color: #fff;
-    padding: 10px 20px;
+    color: white;
+    padding: 1rem 2rem;
 }
 
 .logo img {
-    height: 60px;
+    height: auto;
+    width: 120px; /* Adjusted for better visual weight */
 }
 
 .nav-links {
-    list-style-type: none;
+    list-style: none;
     display: flex;
-    gap: 15px;
-    padding-left: 0;
+    gap: 20px;
+    align-items: center;
 }
 
-.nav-links li a {
-    color: #fff;
+.nav-links a {
+    color: white;
     text-decoration: none;
-    padding: 10px;
-    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.nav-links a:hover, .nav-links a:focus {
+    text-decoration: var(--link-hover-effect);
 }
 
 .hamburger {
     display: none;
     cursor: pointer;
-    font-size: 24px;
-    color: #fff;
+    font-size: 2rem; /* Slightly increased for usability */
+    color: white;
 }
 
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background-color: var(--primary-color);
         flex-direction: column;
         align-items: center;
+        background-color: var(--primary-color);
+        display: none;
     }
 
     .nav-links.active {
@@ -67,161 +89,89 @@ header {
     }
 }
 
+main {
+    padding: 2rem;
+}
+
 footer {
     background-color: var(--secondary-color);
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-}
-
-/* Header Styles */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Open Sans', sans-serif;
-}
-
-/* Navigation Styles */
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
-
-.nav-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-header nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-/* Hamburger Menu Styles */
-.hamburger {
-    display: none; /* Hidden by default */
-    background: none;
-    border: none;
-    font-size: 24px; /* Icon size */
-    cursor: pointer;
-}
-
-.hamburger:focus {
-    outline: none;
-}
-
-@media (max-width: 768px) {
-    .hamburger {
-        display: block; /* Show the hamburger icon on mobile */
-        position: absolute;
-        right: 20px; /* Adjust the position as needed */
-        top: 20px;
-    }
-
-    /* When the hamburger menu is visible, show the navigation items stacked */
-    .hamburger.active + ul {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; /* Aligns links to the left */
-        padding: 20px; /* Adds some spacing around the links */
-        position: absolute;
-        top: 60px; /* Adjust based on the height of your nav bar */
-        right: 0;
-        background-color: #fff; /* Adjust the background as needed */
-        width: 100%; /* Full width */
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: Adds shadow for depth */
-        z-index: 999; /* Makes sure the menu is on top of other content */
-    }
-
-    nav ul li {
-        display: block; /* Stack the links instead of inline */
-        margin: 0; /* Reset margin */
-        width: 100%; /* Full width for tap targets */
-    }
-
-    nav ul li a {
-        display: block; /* Allows the link to fill the entire list item */
-        padding: 10px; /* Larger tap targets */
-    }
-}
-
-/* Hero Styles */
-.hero {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    padding: 1rem 0;
+    position: relative;
+    height: var(--footer-height);
 }
 
-/* Swiper Styles */
-.swiper {
-    width: 100%;
-    padding-top: 50px;
-    padding-bottom: 50px;
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: white;
+}
+
+.swiper-container {
+    margin: 0 auto;
 }
 
 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    height: auto;
-    width: 300px;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .swiper-slide img {
-    display: block;
-    width: 100%;
+    width: 80%;  
+    height: auto;  
+  }
+  
+.hero {
+    margin: 2rem 0;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Logo Styles */
-header nav ul li.logo {
-    display: inline-block;
-    margin-right: 20px;
+@media (max-width: 768px) {
+    .hero {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
 }
 
-header nav ul li.logo a img {
-    height: 50px; /* or the height you prefer */
-    width: auto; /* maintain aspect ratio */
-}
-
-/* Main Content Styles */
-main {
-    min-height: calc(100vh - 160px); /* Adjust 160px based on your header and footer height */
-    padding-bottom: 50px; /* Add padding to account for the footer */
-}
-
-/* Footer Styles */
-footer {
-    background-color: var(--secondary-color); /* Your chosen color */
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    width: 100%;
-}
-
-/* Sticky Footer */
+/* Ensuring footer sticks to the bottom */
 html {
     position: relative;
     min-height: 100%;
 }
 
 body {
-    margin-bottom: 60px; /* Height of the footer */
+    margin-bottom: var(--footer-height);
 }
 
 footer {
     position: absolute;
     bottom: 0;
-    left: 0;
+    width: 100%;
+}
+
+/* Enhancements for larger screens */
+@media (min-width: 992px) {
+    header {
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links a {
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        background-color: var(--hover-color);
+        color: white;
+        padding: 0.5rem 1.5rem; /* More padding for hover state */
+    }
 }
