@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,26 +9,26 @@
     <!-- Custom Styles for personalized styling -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Google Fonts for diverse and accessible typography -->
-    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' rel='stylesheet'>
     <!-- Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
-
 <body>
     <header>
         <nav>
-            <div class="nav-wrapper"> <!-- Wrapper for logo and hamburger icon -->
-                <li class="logo">
+            <div class="nav-container"> <!-- container to align logo and hamburger -->
+                <div class="logo">
                     <a href="index.html">
                         <img src="assets/images/homevise-logo.webp" alt="HomeVise Logo">
                     </a>
-                </li>
+                </div>
+                <!-- Hamburger Icon -->
                 <button class="hamburger" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-            <ul>
-                <!-- Other navigation items -->
+            <!-- Navigation Links -->
+            <ul class="nav-links">
                 <li class="active"><a href="index.html">Home</a></li>
                 <li><a href="register.html">Register</a></li>
                 <li><a href="search.html">Find Professionals</a></li>
@@ -39,7 +38,8 @@
         </nav>
     </header>    
     <main>
-        <section class="hero">
+	  <!-- Main content -->
+	        <section class="hero">
             <h1>Welcome to HomeVise</h1>
             <p>Your trusted partner in home improvement and design.</p>
             <button id="learnMore">Learn More</button>
@@ -92,22 +92,15 @@
             <p>- Taylor, DIY Enthusiast</p>
         </div>
     </section>
-</main>
-<footer>
-    <p>© HomeVise 2024</p>
-    <div class="social-icons">
-        <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-</footer>
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<!-- jQuery for AJAX call -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- External script -->
-<script src="assets/js/script.js"></script>
+    </main>
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- jQuery for AJAX call -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- External script -->
+    <script src="assets/js/script.js"></script>
 </body>
-
 </html>
