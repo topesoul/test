@@ -27,3 +27,16 @@ $.ajax({
         console.log(data);
     }
 });
+
+<script>
+    // Select the hamburger icon
+    const hamburger = document.querySelector('.hamburger');
+    const navUL = document.querySelector('nav ul');
+
+    // Listen for a click on the hamburger icon
+    hamburger.addEventListener('click', () => {
+        // Toggle the "active" class on both the hamburger and the nav UL
+        hamburger.classList.toggle('active');
+        navUL.classList.toggle('active');
+    });
+</script>
