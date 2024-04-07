@@ -1,47 +1,77 @@
-/* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* Variables for theme colors */
 :root {
-    --primary-color: #30C9C6; /* teal color to match logo theme */
-    --secondary-color: #207178; /* darker blue to match logo theme */
-    --text-color: #333; /* Default text color for content */
-    --button-hover-color: #3C91E6; /* similar light blue to match logo theme*/
+    --primary-color: #30C9C6;
+    --secondary-color: #207178;
+    --text-color: #333;
+    --button-hover-color: #3C91E6;
 }
 
-/* Body and HTML Styles */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
     color: var(--text-color);
-    background-color: var(--primary-color);  
-
-/* Header and Navigation Styles */
-header nav {
-    background-color: var(--secondary-color);  
-    color: white;
+    background-color: #fff;
 }
 
-.nav-container {
+header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 60px;
+}
+
+.nav-links {
+    list-style-type: none;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em;
+    gap: 15px;
+    padding-left: 0;
 }
 
-.logo a img {
-    height: 60px; 
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
 }
 
-/* Hamburger Menu */
 .hamburger {
     display: none;
-    font-size: 2rem;
-    color: white;
-    background: none;
-    border: none;
     cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-color);
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
 }
 
 /* Header Styles */
@@ -164,4 +194,35 @@ header nav ul li.logo {
 header nav ul li.logo a img {
     height: 50px; /* or the height you prefer */
     width: auto; /* maintain aspect ratio */
+}
+
+/* Main Content Styles */
+main {
+    min-height: calc(100vh - 160px); /* Adjust 160px based on your header and footer height */
+    padding-bottom: 50px; /* Add padding to account for the footer */
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--secondary-color); /* Your chosen color */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* Sticky Footer */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px; /* Height of the footer */
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
