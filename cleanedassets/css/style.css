@@ -1,12 +1,47 @@
 /* Import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+/* Variables for theme colors */
+:root {
+    --primary-color: #30C9C6; /* teal color to match logo theme */
+    --secondary-color: #207178; /* darker blue to match logo theme */
+    --text-color: #333; /* Default text color for content */
+    --button-hover-color: #3C91E6; /* similar light blue to match logo theme*/
+}
 
 /* Body and HTML Styles */
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    background-color: var(--primary-color);  
+
+/* Header and Navigation Styles */
+header nav {
+    background-color: var(--secondary-color);  
+    color: white;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+}
+
+.logo a img {
+    height: 60px; 
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 /* Header Styles */
