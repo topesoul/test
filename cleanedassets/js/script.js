@@ -28,15 +28,14 @@ $.ajax({
     }
 });
 
-<script>
-    // Select the hamburger icon
-    const hamburger = document.querySelector('.hamburger');
-    const navUL = document.querySelector('nav ul');
+// Function to toggle the menu in mobile view
+function toggleMenu() {
+    document.querySelector('.nav-links').classList.toggle('active');
+    document.querySelector('.hamburger').classList.toggle('active');
+}
 
-    // Listen for a click on the hamburger icon
-    hamburger.addEventListener('click', () => {
-        // Toggle the "active" class on both the hamburger and the nav UL
-        hamburger.classList.toggle('active');
-        navUL.classList.toggle('active');
-    });
-</script>
+// Select the hamburger icon
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    hamburger.addEventListener('click', toggleMenu);
+});
