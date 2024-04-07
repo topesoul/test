@@ -20,3 +20,10 @@ var swiper = new Swiper('.swiper', {
     },
 });
 
+$.ajax({
+    url: 'https://tinyfac.es/api/data?limit=50&quality=0',
+    dataType: 'json',
+    success: function(data) {
+        console.log(data);
+    }
+});
