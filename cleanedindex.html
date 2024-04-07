@@ -10,42 +10,48 @@
     <!-- Custom Styles for personalized styling -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Google Fonts for diverse and accessible typography -->
-    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&display=swap'
-        rel='stylesheet'>
-    <!-- open-source JavaScript library, Swiper for image slider -->
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&display=swap' rel='stylesheet'>
+    <!-- Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
-<header>
-    <nav>
-        <ul>
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="search.html">Find Professionals</a></li>
-            <li><a href="diy-guides.html">DIY Guides</a></li>
-            <li><a href="about.html">About Us</a></li>
-        </ul>
-    </nav>
-</header>
-<main>
-    <section class="hero">
-        <h1>Welcome to HomeVise</h1>
-        <p>Your trusted partner in home improvement and design.</p>
-        <button id="learnMore">Learn More</button>
-    </section>
-    <section>
-        <div class="swiper">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="assets/images/pexels-max-vakhtbovycn-image-seven.jpg" alt="Project 1"></div>
-                <div class="swiper-slide"><img src="assets/images/pexels-max-vakhtbovycn-image-dining.jpg" alt="Project 2"></div>
-                <div class="swiper-slide"><img src="assets/images/pexels-max-vakhtbovycn-image-openplan.jpg" alt="Project 3"></div>
-                <div class="swiper-slide"><img src="assets/images/pexels-trần-chính-image-four.jpg" alt="Project 4"></div>
-                <div class="swiper-slide"><img src="assets/images/pexels-roshan-patel-image-five.jpg" alt="Project 5"></div>
+    <header>
+        <nav>
+            <ul>
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="register.html">Register</a></li>
+                <li><a href="search.html">Find Professionals</a></li>
+                <li><a href="diy-guides.html">DIY Guides</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>Welcome to HomeVise</h1>
+            <p>Your trusted partner in home improvement and design.</p>
+            <button id="learnMore">Learn More</button>
+        </section>
+        <!-- Swiper -->
+        <section>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="assets/images/pexels-max-vakhtbovycn-image-seven.jpg" alt="Project 1"></div>
+                    <div class="swiper-slide"><img src="assets/images/pexels-max-vakhtbovycn-image-dining.jpg" alt="Project 2"></div>
+                    <div class="swiper-slide"><img src="assets/images/pexels-max-vakhtbovycn-image-openplan.jpg" alt="Project 3"></div>
+                    <div class="swiper-slide"><img src="assets/images/pexels-trần-chính-image-four.jpg" alt="Project 4"></div>
+                    <div class="swiper-slide"><img src="assets/images/pexels-roshan-patel-image-five.jpg" alt="Project 5"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- custom navigation buttons -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <!-- custom scrollbar -->
+                <div class="swiper-scrollbar"></div>
             </div>
-            <div class="swiper-pagination"></div>
-        </div>        
-    </section>
+        </section>
     <section>
         <h2>Features</h2>
         <p>Discover how HomeVise can help you with your next home project.
@@ -85,9 +91,12 @@
         <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
     </div>
 </footer>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="assets/js/script.js"></script>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- jQuery for AJAX call -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- External script -->
+<script src="assets/js/script.js"></script>
 </body>
 
 </html>
