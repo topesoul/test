@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homevise - Home Improvement Made Easy</title>
-    <!-- Font Awesome for rich iconography -->
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <!-- Custom Styles for personalized styling -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Google Fonts for diverse and accessible typography -->
     <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' rel='stylesheet'>
-    <!-- Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 <body>
+    <!-- Header section -->
     <header>
         <nav>
+            <!-- Logo -->
             <div class="logo">
                 <a href="index.html">
                     <img src="assets/images/homevise-logo.webp" alt="Homevise Logo">
                 </a>
             </div>
+            <!-- Hamburger Menu -->
             <button class="hamburger" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
+            <!-- Navigation Links -->
             <ul class="nav-links">
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="search.html"><i class="fas fa-search"></i> Find Professionals</a></li>
                 <li><a href="diy-guides.html"><i class="fas fa-tools"></i> DIY Guides</a></li>
                 <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
-                <!-- Toggles between Register/Login and Profile based on user login state -->
-                <li class="user-account">
-                    <li id="auth-link"><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login/Register</a></li>
-                </ul>         
+                <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login/Register</a></li>
+            </ul>                 
         </nav>
     </header>
+
+    <!-- Main Content -->
     <main>
-	  <!-- Main content -->
-	        <section class="hero">
+        <!-- Hero Section -->
+        <section class="hero">
             <h1>Welcome to Homevise</h1>
             <p>Your trusted partner in home improvement and design.</p>
-            <button id="learnMore">Learn More</button>
+            <a href="#features" class="button-like" role="button">Learn More</a>
         </section>
-        <!-- Swiper -->
+
+        <!-- Image Slider Section -->
         <section>
             <div class="swiper">
                 <div class="swiper-wrapper">
@@ -52,59 +56,74 @@
                     <div class="swiper-slide"><img src="assets/images/pexels-trần-chính-image-four.jpg" alt="Project 4"></div>
                     <div class="swiper-slide"><img src="assets/images/pexels-roshan-patel-image-five.jpg" alt="Project 5"></div>
                 </div>
-                <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
-                <!-- custom navigation buttons -->
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
-                <!-- custom scrollbar -->
                 <div class="swiper-scrollbar"></div>
             </div>
         </section>
-        <section>
+
+        <!-- Features Section -->
+        <section id="features">
             <h2>Features</h2>
             <p>Discover how Homevise can help you with your next home project.</p>
             <ul>
-                <li><i class="fas fa-bolt"></i> <strong>Instant Access:</strong> Connect instantly with a wide range of home improvement experts, from interior designers to structural engineers. Your dream home is just a click away.</li>
-                <li><i class="fas fa-wallet"></i> <strong>Cost-Effective:</strong> Get professional advice without committing to full-scale projects. Make informed decisions that save you time and money.</li>
-                <li><i class="fas fa-tools"></i> <strong>Project Planning Tools:</strong> Plan like a pro with our integrated tools for room planning, budget tracking, and project management. Home improvement has never been this easy.</li>
-                <li><i class="fas fa-network-wired"></i> <strong>Expert Network:</strong> Explore our extensive network of professionals. View their profiles, check their availability, and choose the one that fits your needs.</li>
-                <li><i class="fas fa-comments"></i> <strong>Real-Time Consultations:</strong> Discuss your home improvement ideas in real-time video calls with our experts. Get immediate feedback and advice.</li>
+                <li><i class="fas fa-bolt"></i> <strong>Instant Access:</strong> Connect instantly with a wide range of home improvement experts.</li>
+                <li><i class="fas fa-wallet"></i> <strong>Cost-Effective:</strong> Get professional advice without committing to full-scale projects.</li>
+                <li><i class="fas fa-tools"></i> <strong>Project Planning Tools:</strong> Plan like a pro with our integrated tools for room planning, budget tracking, and project management.</li>
+                <li><i class="fas fa-network-wired"></i> <strong>Expert Network:</strong> Explore our extensive network of professionals.</li>
+                <li><i class="fas fa-comments"></i> <strong>Real-Time Consultations:</strong> Discuss your home improvement ideas in real-time video calls.</li>
             </ul> 
         </section>        
-    <section>
-        <h2>What Our Users Say</h2>
-        <div class="testimonial">
-            <img src="assets/images/user-image.png" alt="User 1">
-            <p>"Homevise made my home renovation project a breeze! The expert advice I received was invaluable and the project management tools kept me organized. Highly recommend!"</p>
-            <p>- Alicia, Homeowner</p>
-        </div>
-        <div class="testimonial">
-            <img src="assets/images/construction-worker.png" alt="User 2">
-            <p>"As a professional, Homevise has helped me connect with clients I wouldn't have found otherwise. The platform is easy to use and the team is always supportive."</p>
-            <p>- Jamie, Interior Designer</p>
-        </div>
-        <div class="testimonial">
-            <img src="assets/images/professional-consultant.png" alt="User 3">
-            <p>"I was unsure about my DIY project, but the guides on Homevise gave me the confidence to do it myself. Plus, I knew professional help was just a click away if I needed it."</p>
-            <p>- Taylor, DIY Enthusiast</p>
-        </div>
-    </section>
+
+        <!-- Testimonials Section -->
+        <section>
+            <h2>What Our Users Say</h2>
+            <div class="testimonial">
+                <img src="assets/images/user-image.png" alt="User 1">
+                <p>"Homevise made my home renovation project a breeze! The expert advice I received was invaluable and the project management tools kept me organized. Highly recommend!"</p>
+                <p>- Alicia, Homeowner</p>
+            </div>
+            <div class="testimonial">
+                <img src="assets/images/construction-worker.png" alt="User 2">
+                <p>"As a professional, Homevise has helped me connect with clients I wouldn't have found otherwise. The platform is easy to use and the team is always supportive."</p>
+                <p>- Jamie, Interior Designer</p>
+            </div>
+            <div class="testimonial">
+                <img src="assets/images/professional-consultant.png" alt="User 3">
+                <p>"I was unsure about my DIY project, but the guides on Homevise gave me the confidence to do it myself. Plus, I knew professional help was just a click away if I needed it."</p>
+                <p>- Taylor, DIY Enthusiast</p>
+            </div>
+        </section>
     </main>
+
+    <!-- Footer -->
     <footer>
-        <p>© Homevise 2024</p>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <div class="footer-content">
+            <div class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+            </div>
+            <div class="footer-contact">
+                <p>Contact us at <a href="mailto:info@homevise.com">info@homevise.com</a></p>
+            </div>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <div class="footer-legal">
+            <p>© HomeVise 2024. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Swiper JS -->
+
+    <!-- Scripts -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <!-- jQuery for AJAX call -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- External script -->
     <script src="assets/js/script.js"></script>
 </body>
 </html>
