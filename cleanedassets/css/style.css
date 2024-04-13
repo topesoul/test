@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Root variable definitions for theme consistency */
 :root {
     --primary-color: #30C9C6;
     --secondary-color: #207178;
@@ -8,9 +9,10 @@
     --hover-color: #3C91E6;
     --link-hover-effect: background-color var(--hover-color);
     --transition-speed: 0.3s;
-    --footer-height: 60px;
+    --footer-height: auto;
 }
 
+/* Global styles */
 * {
     margin: 0;
     padding: 0;
@@ -24,6 +26,7 @@ body, html {
     line-height: 1.6;
 }
 
+/* Link and button transitions for interactive feedback */
 a, button {
     transition: color var(--transition-speed), background-color var(--transition-speed);
 }
@@ -33,30 +36,38 @@ a:focus, button:focus {
     outline-offset: 3px;
 }
 
+/* Header styles */
 header {
     background-color: var(--primary-color);
     color: white;
     padding: 1rem 2rem;
 }
 
+/* Logo styles */
 .logo {
     display: flex;
-    justify-content: center; /* Centers horizontally */
-    align-items: center; /* Centers vertically */
-    height: 100%; /* Takes full height of the parent */
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 1rem;
 }
 
 .logo img {
     height: auto;
-    width: 120px; /* Adjusted for better visual weight */
+    width: 120px;
 }
 
+.fas {
+color: var(--text-color);
+}
+
+/* Navigation link styling */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 20px;
     align-items: center;
-    justify-content: center; /* Centers horizontally */
+    justify-content: center;
 }
 
 .nav-links a {
@@ -71,10 +82,11 @@ header {
     border-radius: 4px;
 }
 
+/* Mobile navigation styles */
 .hamburger {
     display: none;
     cursor: pointer;
-    font-size: 2rem; /* Slightly increased for usability */
+    font-size: 2rem;
     color: white;
 }
 
@@ -99,10 +111,12 @@ header {
     }
 }
 
+/* Main content area styling */
 main {
     padding: 2rem;
 }
 
+/* Footer styles */
 footer {
     background-color: var(--secondary-color);
     color: white;
@@ -112,6 +126,7 @@ footer {
     height: var(--footer-height);
 }
 
+/* Social icons styles */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -122,31 +137,31 @@ footer {
     color: white;
 }
 
-/* Swiper Gallery Styles */
+/* Swiper Gallery specific styles */
 .swiper {
-    width: 90%;  
-    max-width: 1000px; /* Maximum width */
+    width: 90%;
+    max-width: 1000px;
 }
 
 .swiper-wrapper {
     display: flex;
-    justify-content: center; /* Centers slides */
+    justify-content: center;
 }
 
 .swiper-slide img {
-    width: 100%;  
+    width: 100%;
     height: auto;
-    border-radius: 10px; /* Rounded corners for images */
+    border-radius: 10px;
 }
 
-/* Swiper Navigation Styles */
+/* Navigation buttons within swiper */
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--primary-color);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     padding: 10px;
-    margin: 0 10px; /* Spacing between buttons */
+    margin: 0 10px;
     cursor: pointer;
 }
 
@@ -161,12 +176,12 @@ footer {
     height: 4px;
 }
 
-/* Typography */
+/* Typography for headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
 
-/* Button styles */
+/* General button styling */
 button, .button-like {
     background-color: var(--primary-color);
     color: white;
@@ -177,51 +192,52 @@ button, .button-like {
     border-radius: 4px;
 }
 
-/* Features Section Styles */
+/* Section-specific styles for layout and shadows */
 section {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers content horizontally */
-    text-align: center; /* Centers text */
-    margin: 20px 0; /* Adds some vertical spacing */
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
     padding: 20px;
     border-radius: 10px;
+}
+
+#features {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Styling for titles in sections */
 section h2 {
-    font-size: 2em; /* Makes the title larger */
-    margin-bottom: 20px; /* Adds some spacing below the title */
-}
-
-section p {
-    margin-bottom: 10px; /* Adds some spacing below each paragraph */
-}
-
-section ul {
-    list-style-type: none; /* Removes bullet points */
-    padding: 0; /* Removes default padding */
-}
-
-section ul li {
-    margin-bottom: 10px; /* Adds some spacing below each list item */
-}
-
-section ul li strong {
-    color: var(--primary-color); /* Makes the strong text the primary color */
-}
-
-ul li i {
-    margin-right: 8px; /* Adds spacing between the icon and text */
-    color: var(--primary-color); /* Icon color */
-}
-
-/* Testimonial Section Styles */
-section h2 {
-    text-align: center;
+    font-size: 2em;
     margin-bottom: 20px;
 }
 
+/* Paragraph spacing within sections */
+section p {
+    margin-bottom: 10px;
+}
+
+/* List styles within features section */
+section ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+section ul li {
+    margin-bottom: 10px;
+}
+
+section ul li strong {
+    color: var(--primary-color);
+}
+
+ul li i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+/* Testimonial specific styling */
 .testimonial {
     display: flex;
     flex-direction: column;
@@ -234,17 +250,21 @@ section h2 {
 }
 
 .testimonial img {
-    width: 100px;  
+    width: 100px;
     height: auto;
-    border-radius: 50%; /* Creates a circular image */
-    object-fit: cover; /* Ensures the image covers the entire area */
+    border-radius: 50%;
+    object-fit: cover;
     margin-bottom: 15px;
+    display: block; /* Added to make the image a block-level element */
+    margin-left: auto; /* Added to center the image horizontally */
+    margin-right: auto; /* Added to center the image horizontally */
 }
 
 .testimonial p {
     margin-bottom: 10px;
 }
 
+/* Hover and focus styles for interactive elements */
 button:hover, .button-like:hover,
 button:focus, .button-like:focus {
     background-color: var(--hover-color);
@@ -252,6 +272,7 @@ button:focus, .button-like:focus {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Hero section specific styles */
 .hero {
     margin: 2rem 0;
     padding: 2rem;
@@ -268,23 +289,18 @@ button:focus, .button-like:focus {
     }
 }
 
-/* Ensuring footer sticks to the bottom */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
+/* Sticky footer */
 body {
-    margin-bottom: var(--footer-height);
-}
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  main {
+    flex: 1;
+  } 
 
-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Enhancements for larger screens */
+/* Additional styles for larger screens */
 @media (min-width: 992px) {
     header {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -295,9 +311,19 @@ footer {
         transition: all 0.3s ease;
     }
 
-    .nav-links a:hover {
-        background-color: var(--hover-color);
-        color: white;
-        padding: 0.5rem 1.5rem; /* More padding for hover state */
-    }
+.nav-links a, button {
+    background-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    /* Other styling ... */
+  }
+  
+  .nav-links a:hover, .nav-links a:focus,
+  button:hover, button:focus {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: white;
+    padding: 0.5rem 1.5rem;
+  }
 }
