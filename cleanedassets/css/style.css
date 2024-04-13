@@ -211,6 +211,11 @@ section ul li strong {
     color: var(--primary-color); /* Makes the strong text the primary color */
 }
 
+ul li i {
+    margin-right: 8px; /* Adds spacing between the icon and text */
+    color: var(--primary-color); /* Icon color */
+}
+
 /* Testimonial Section Styles */
 section h2 {
     text-align: center;
