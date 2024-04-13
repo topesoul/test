@@ -6,7 +6,7 @@
     --text-color: #333;
     --background-color: #f4f4f4;
     --hover-color: #3C91E6;
-    --link-hover-effect: underline 2px rgba(255, 255, 255, 0.75);
+    --link-hover-effect: background-color var(--hover-color);
     --transition-speed: 0.3s;
     --footer-height: 60px;
 }
@@ -39,6 +39,13 @@ header {
     padding: 1rem 2rem;
 }
 
+.logo {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100%; /* Takes full height of the parent */
+}
+
 .logo img {
     height: auto;
     width: 120px; /* Adjusted for better visual weight */
@@ -49,16 +56,19 @@ header {
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: center; /* Centers horizontally */
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .nav-links a:hover, .nav-links a:focus {
-    text-decoration: var(--link-hover-effect);
+    background-color: var(--hover-color);
+    border-radius: 4px;
 }
 
 .hamburger {
@@ -112,24 +122,135 @@ footer {
     color: white;
 }
 
-.swiper-container {
-    margin: 0 auto;
+/* Swiper Gallery Styles */
+.swiper {
+    width: 90%;  
+    max-width: 1000px; /* Maximum width */
 }
 
-.swiper-slide {
+.swiper-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Centers slides */
 }
 
 .swiper-slide img {
     width: 100%;  
-    height: auto;  
-  }
-  
+    height: auto;
+    border-radius: 10px; /* Rounded corners for images */
+}
+
+/* Swiper Navigation Styles */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    padding: 10px;
+    margin: 0 10px; /* Spacing between buttons */
+    cursor: pointer;
+}
+
+.swiper-pagination {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.swiper-scrollbar {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    height: 4px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Button styles */
+button, .button-like {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
+    border-radius: 4px;
+}
+
+/* Features Section Styles */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    text-align: center; /* Centers text */
+    margin: 20px 0; /* Adds some vertical spacing */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2em; /* Makes the title larger */
+    margin-bottom: 20px; /* Adds some spacing below the title */
+}
+
+section p {
+    margin-bottom: 10px; /* Adds some spacing below each paragraph */
+}
+
+section ul {
+    list-style-type: none; /* Removes bullet points */
+    padding: 0; /* Removes default padding */
+}
+
+section ul li {
+    margin-bottom: 10px; /* Adds some spacing below each list item */
+}
+
+section ul li strong {
+    color: var(--primary-color); /* Makes the strong text the primary color */
+}
+
+/* Testimonial Section Styles */
+section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial img {
+    width: 100px;  
+    height: auto;
+    border-radius: 50%; /* Creates a circular image */
+    object-fit: cover; /* Ensures the image covers the entire area */
+    margin-bottom: 15px;
+}
+
+.testimonial p {
+    margin-bottom: 10px;
+}
+
+button:hover, .button-like:hover,
+button:focus, .button-like:focus {
+    background-color: var(--hover-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
 .hero {
     margin: 2rem 0;
     padding: 2rem;
+    text-align: center;
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
