@@ -1,7 +1,7 @@
 // Initialize Swiper
 var swiper = new Swiper('.swiper', {
     direction: 'horizontal',
-    loop: true,
+    loop: false,  // Change this line
     pagination: {
         el: '.swiper-pagination',
     },
@@ -24,3 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 });
+// For Testimonial Carousel
+$(document).ready(function(){
+    $('.testimonial-carousel').slick({
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+    });
+});
+
