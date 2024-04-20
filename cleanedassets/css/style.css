@@ -137,15 +137,19 @@ footer {
     color: white;
 }
 
-/* Swiper Gallery specific styles */
+/* Swiper Gallery styles */
 .swiper {
-    width: 90%;
-    max-width: 1000px;
+    width: 100%; /* Full width of the parent container */
+    max-width: none; /* Allows the swiper to take as much space as available */
+    height: 400px;
 }
 
-.swiper-wrapper {
-    display: flex;
-    justify-content: center;
+.swiper-slide img {
+    width: auto; /* Adjust the width automatically */
+    max-width: 100%; /* Ensure the image does not exceed the container width */
+    max-height: 500px;  
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
 }
 
 .swiper-slide img {
