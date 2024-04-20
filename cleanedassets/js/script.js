@@ -1,5 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Fetch and display testimonials
     fetchTestimonialsAndInitializeCarousel();
+
+    // Initialize Swiper slider
+    initializeSwiperSlider();
 });
 
 function fetchTestimonialsAndInitializeCarousel() {
@@ -7,6 +11,7 @@ function fetchTestimonialsAndInitializeCarousel() {
         .then(response => response.json())
         .then(testimonials => {
             const carousel = document.querySelector('.testimonial-carousel');
+            carousel.innerHTML = ''; // Clear existing content
 
             // Dynamically create and append testimonials to the carousel
             testimonials.forEach(t => {
@@ -20,7 +25,7 @@ function fetchTestimonialsAndInitializeCarousel() {
                 carousel.appendChild(testimonialElement);
             });
 
-            // Initialize Slick Carousel after testimonials are dynamically added
+            // Initialize Slick Carousel
             $(carousel).slick({
                 infinite: true,
                 slidesToShow: 3,
@@ -41,24 +46,8 @@ function fetchTestimonialsAndInitializeCarousel() {
         .catch(error => console.error('Failed to fetch testimonials:', error));
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var swiper = new Swiper('.swiper', {
-        loop: true,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-});
-
-// Swiper slider initialization
-document.addEventListener('DOMContentLoaded', function() {
+function initializeSwiperSlider() {
     new Swiper('.swiper', {
-        // Parameters
         loop: true,
         pagination: {
             el: '.swiper-pagination',
@@ -71,23 +60,19 @@ document.addEventListener('DOMContentLoaded', function() {
         scrollbar: {
             el: '.swiper-scrollbar',
         },
-        // Responsive breakpoints
         breakpoints: {
-            // when window width is >= 320px
             320: {
                 slidesPerView: 1,
                 spaceBetween: 20
             },
-            // when window width is >= 480px
             480: {
                 slidesPerView: 2,
                 spaceBetween: 30
             },
-            // when window width is >= 640px
             640: {
                 slidesPerView: 3,
                 spaceBetween: 40
             }
         }
     });
-});
+}
