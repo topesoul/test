@@ -1,52 +1,87 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Fetch and display testimonials
-    fetchTestimonialsAndInitializeCarousel();
-
-    // Initialize Swiper slider
-    initializeSwiperSlider();
+    initializeTestimonials();
+    initializeImageSlider();
 });
 
-function fetchTestimonialsAndInitializeCarousel() {
+// Function to initialize the testimonials with autoplay functionality
+function initializeTestimonials() {
+    const carousel = document.getElementById('testimonialCarousel');
+    const prevButton = document.getElementById('prevTestimonial');
+    const nextButton = document.getElementById('nextTestimonial');
+    let currentIndex = 0;
+    let autoplayInterval = 3000; // milliseconds for the interval between testimonials
+
     fetch('testimonials.json')
         .then(response => response.json())
         .then(testimonials => {
-            const carousel = document.querySelector('.testimonial-carousel');
-            carousel.innerHTML = ''; // Clear existing content
-
-            // Dynamically create and append testimonials to the carousel
-            testimonials.forEach(t => {
-                const testimonialElement = document.createElement('div');
-                testimonialElement.className = 'testimonial';
-                testimonialElement.innerHTML = `
-                    <img src="${t.image}" alt="${t.name}">
-                    <p>"${t.text}"</p>
-                    <p>- ${t.name}, ${t.title}</p>
-                `;
+            testimonials.forEach((testimonial, index) => {
+                const testimonialElement = createTestimonialElement(testimonial, index);
                 carousel.appendChild(testimonialElement);
             });
+            updateTestimonialsDisplay(testimonials, currentIndex);
 
-            // Initialize Slick Carousel
-            $(carousel).slick({
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 1,
-                dots: true,
-                autoplay: true,
-                autoplaySpeed: 2000,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1
-                        }
-                    }
-                ]
+            // Start autoplay
+            let autoplay = setInterval(() => {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                updateTestimonialsDisplay(testimonials, currentIndex);
+            }, autoplayInterval);
+
+            // Add event listeners for navigation with manual control
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+                updateTestimonialsDisplay(testimonials, currentIndex);
+                resetAutoplay();
             });
+
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % testimonials.length;
+                updateTestimonialsDisplay(testimonials, currentIndex);
+                resetAutoplay();
+            });
+
+            // Function to reset the autoplay when manually interacted
+            function resetAutoplay() {
+                clearInterval(autoplay);
+                autoplay = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % testimonials.length;
+                    updateTestimonialsDisplay(testimonials, currentIndex);
+                }, autoplayInterval);
+            }
         })
-        .catch(error => console.error('Failed to fetch testimonials:', error));
+        .catch(error => console.error('Error fetching testimonials:', error));
 }
 
-function initializeSwiperSlider() {
+// Function to create testimonial HTML element
+function createTestimonialElement(testimonial, index) {
+    const element = document.createElement('div');
+    element.className = 'testimonial';
+    element.id = `testimonial-${index}`;
+    element.innerHTML = `
+        <div class="testimonial-star-rating">${generateStars(testimonial.rating)}</div>
+        <img src="${testimonial.image}" alt="${testimonial.name}" class="testimonial-img">
+        <p class="testimonial-text">"${testimonial.text}"</p>
+        <p class="testimonial-author">- ${testimonial.name}, ${testimonial.title}</p>
+    `;
+    return element;
+}
+
+// Function to generate star ratings for testimonials
+function generateStars(rating) {
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+}
+
+// Function to update the display of testimonials based on the current index
+function updateTestimonialsDisplay(testimonials, currentIndex) {
+    testimonials.forEach((_, i) => {
+        const testimonialElement = document.getElementById(`testimonial-${i}`);
+        testimonialElement.style.display = 'none'; // Hide all testimonials
+    });
+    const currentTestimonialElement = document.getElementById(`testimonial-${currentIndex}`);
+    currentTestimonialElement.style.display = 'block'; // Show only the current testimonial
+}
+
+// Function to initialize the image slider with Swiper
+function initializeImageSlider() {
     new Swiper('.swiper', {
         loop: true,
         pagination: {
