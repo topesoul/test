@@ -1,86 +1,93 @@
-// Initialize Swiper
-var swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: false,  // Change this line
-    pagination: {
-        el: '.swiper-pagination',
-    },
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-    },
-    scrollbar: {
-        el: '.swiper-scrollbar',
-    },
+document.addEventListener('DOMContentLoaded', function() {
+    fetchTestimonialsAndInitializeCarousel();
 });
 
-// Toggling hamburger menu
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+function fetchTestimonialsAndInitializeCarousel() {
+    fetch('testimonials.json')
+        .then(response => response.json())
+        .then(testimonials => {
+            const carousel = document.querySelector('.testimonial-carousel');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
-});
-// For Testimonial Carousel
-$(document).ready(function(){
-    $('.testimonial-carousel').slick({
-        infinite: true,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-    });
-});
+            // Dynamically create and append testimonials to the carousel
+            testimonials.forEach(t => {
+                const testimonialElement = document.createElement('div');
+                testimonialElement.className = 'testimonial';
+                testimonialElement.innerHTML = `
+                    <img src="${t.image}" alt="${t.name}">
+                    <p>"${t.text}"</p>
+                    <p>- ${t.name}, ${t.title}</p>
+                `;
+                carousel.appendChild(testimonialElement);
+            });
 
-//Generating Additional Testimonials Entries 
-function generateTestimonials() {
-    const baseTestimonials = [
-        {
-            name: "Alicia",
-            title: "Homeowner",
-            text: "Homevise made my home renovation project a breeze! The expert advice I received was invaluable and the project management tools kept me organized. Highly recommend!",
-            image: "assets/images/user-image.png"
-        },
-        {
-            name: "Jamie",
-            title: "Interior Designer",
-            text: "As a professional, Homevise has helped me connect with clients I wouldn't have found otherwise. The platform is easy to use and the team is always supportive.",
-            image: "assets/images/construction-worker.png"
-        },
-        {
-            name: "Taylor",
-            title: "DIY Enthusiast",
-            text: "I was unsure about my DIY project, but the guides on Homevise gave me the confidence to do it myself. Plus, I knew professional help was just a click away if I needed it.",
-            image: "assets/images/professional-consultant.png"
-        }
-    ];
-
-    let testimonials = [];
-    for (let i = 0; i < 50; i++) {
-        const randomIndex = Math.floor(Math.random() * baseTestimonials.length);
-        const testimonial = {...baseTestimonials[randomIndex]};
-        testimonial.id = i + 1;
-        testimonials.push(testimonial);
-    }
-    return testimonials;
-}
-
-function displayTestimonials() {
-    const testimonials = generateTestimonials();
-    const container = document.getElementById('testimonial-container');
-    testimonials.forEach(testimonial => {
-        const testimonialElement = document.createElement('div');
-        testimonialElement.className = 'testimonial';
-        testimonialElement.innerHTML = `
-            <img src="${testimonial.image}" alt="${testimonial.name}">
-            <p>"${testimonial.text}"</p>
-            <p>- ${testimonial.name}, ${testimonial.title}</p>
-        `;
-        container.appendChild(testimonialElement);
-    });
+            // Initialize Slick Carousel after testimonials are dynamically added
+            $(carousel).slick({
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                dots: true,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1
+                        }
+                    }
+                ]
+            });
+        })
+        .catch(error => console.error('Failed to fetch testimonials:', error));
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    displayTestimonials();
+    var swiper = new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+});
+
+// Swiper slider initialization
+document.addEventListener('DOMContentLoaded', function() {
+    new Swiper('.swiper', {
+        // Parameters
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        scrollbar: {
+            el: '.swiper-scrollbar',
+        },
+        // Responsive breakpoints
+        breakpoints: {
+            // when window width is >= 320px
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20
+            },
+            // when window width is >= 480px
+            480: {
+                slidesPerView: 2,
+                spaceBetween: 30
+            },
+            // when window width is >= 640px
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 40
+            }
+        }
+    });
 });
