@@ -346,6 +346,16 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h2 #guides {
     text-align: center;
+}
+
+.hamburger.active, .nav-links.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.nav-links.active a {
+    padding: 10px;
+    display: block; 
 }
