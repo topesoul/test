@@ -6,10 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to initialize the testimonials with autoplay functionality
 function initializeTestimonials() {
     const carousel = document.getElementById('testimonialCarousel');
-    const prevButton = document.getElementById('prevTestimonial');
-    const nextButton = document.getElementById('nextTestimonial');
-    let currentIndex = 0;
-    let autoplayInterval = 3000; // milliseconds for the interval between testimonials
+    carousel.setAttribute('aria-live', 'polite');
 
     fetch('testimonials.json')
         .then(response => response.json())
@@ -18,30 +15,26 @@ function initializeTestimonials() {
                 const testimonialElement = createTestimonialElement(testimonial, index);
                 carousel.appendChild(testimonialElement);
             });
-            updateTestimonialsDisplay(testimonials, currentIndex);
+            updateTestimonialsDisplay(testimonials, 0);
 
-            // Start autoplay
+            let currentIndex = 0;
+            let autoplayInterval = 3000; // milliseconds for the interval between testimonials
             let autoplay = setInterval(() => {
                 currentIndex = (currentIndex + 1) % testimonials.length;
                 updateTestimonialsDisplay(testimonials, currentIndex);
             }, autoplayInterval);
 
-            // Add event listeners for navigation with manual control
-            prevButton.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-                updateTestimonialsDisplay(testimonials, currentIndex);
-                resetAutoplay();
-            });
+            // Pause on hover or focus
+            carousel.addEventListener('mouseenter', pauseAutoplay);
+            carousel.addEventListener('mouseleave', resumeAutoplay);
+            carousel.addEventListener('focusin', pauseAutoplay);
+            carousel.addEventListener('focusout', resumeAutoplay);
 
-            nextButton.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % testimonials.length;
-                updateTestimonialsDisplay(testimonials, currentIndex);
-                resetAutoplay();
-            });
-
-            // Function to reset the autoplay when manually interacted
-            function resetAutoplay() {
+            function pauseAutoplay() {
                 clearInterval(autoplay);
+            }
+
+            function resumeAutoplay() {
                 autoplay = setInterval(() => {
                     currentIndex = (currentIndex + 1) % testimonials.length;
                     updateTestimonialsDisplay(testimonials, currentIndex);
