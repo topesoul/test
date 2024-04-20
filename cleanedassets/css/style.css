@@ -259,13 +259,23 @@ ul li i {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-    display: block; /* Added to make the image a block-level element */
-    margin-left: auto; /* Added to center the image horizontally */
-    margin-right: auto; /* Added to center the image horizontally */
+    display: block; /* Ensures the image is block-level for centering */
+    margin-left: auto; /* Centers the image horizontally */
+    margin-right: auto; /* Centers the image horizontally */
 }
 
 .testimonial p {
     margin-bottom: 10px;
+}
+
+.testimonial-star-rating {
+    color: gold; /* Gold color for stars */
+    font-size: 20px; /* Larger size for better visibility */
+}
+
+.testimonial-carousel {
+    position: relative;
+    padding: 20px;
 }
 
 /* Hover and focus styles for interactive elements */
