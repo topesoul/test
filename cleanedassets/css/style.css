@@ -1,22 +1,22 @@
+/* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
-/* Root variable definitions for theme consistency */
+/* Root variable definitions for consistent theming across the application */
 :root {
-    --primary-color: #30C9C6;
-    --secondary-color: #207178;
-    --text-color: #333;
-    --background-color: #f4f4f4;
-    --hover-color: #3C91E6;
-    --link-hover-effect: background-color var(--hover-color);
-    --transition-speed: 0.3s;
-    --footer-height: auto;
+    --primary-color: #30C9C6;         /* Turquoise - Used for primary interactive elements */
+    --secondary-color: #207178;       /* Dark Slate - Used for footer and headers */
+    --text-color: #333;               /* Dark Grey - Primary text color */
+    --background-color: #f4f4f4;      /* Off White - Background color */
+    --hover-color: #3C91E6;           /* Blue - Hover state color */
+    --transition-speed: 0.3s;         /* Standard speed for transition effects */
+    --footer-height: auto;            /* Auto height for footer */
 }
 
-/* Global styles */
+/* Global styling settings */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box;           /* Ensures padding and border are included in width/height calculations */
 }
 
 body, html {
@@ -26,14 +26,14 @@ body, html {
     line-height: 1.6;
 }
 
-/* Link and button transitions for interactive feedback */
+/* Styling for links and buttons to include basic interaction feedback */
 a, button {
     transition: color var(--transition-speed), background-color var(--transition-speed);
 }
 
 a:focus, button:focus {
     outline: 3px solid var(--hover-color);
-    outline-offset: 3px;
+    outline-offset: 3px;              /* Ensures outline does not overlap text */
 }
 
 /* Header styles */
@@ -43,13 +43,11 @@ header {
     padding: 1rem 2rem;
 }
 
-/* Logo styles */
+/* Logo section within the header */
 .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    padding: 1rem;
 }
 
 .logo img {
@@ -57,8 +55,9 @@ header {
     width: 120px;
 }
 
+/* Font Awesome specific styling */
 .fas {
-color: var(--secondary-color);
+    color: var(--secondary-color);
 }
 
 /* Navigation link styling */
@@ -74,7 +73,6 @@ color: var(--secondary-color);
     color: white;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .nav-links a:hover, .nav-links a:focus {
@@ -82,7 +80,7 @@ color: var(--secondary-color);
     border-radius: 4px;
 }
 
-/* Mobile navigation styles */
+/* Mobile navigation hamburger menu */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -90,6 +88,7 @@ color: var(--secondary-color);
     color: white;
 }
 
+/* Responsive navigation for devices with max-width of 768px */
 @media (max-width: 768px) {
     .nav-links {
         position: absolute;
@@ -111,7 +110,7 @@ color: var(--secondary-color);
     }
 }
 
-/* Main content area styling */
+/* Main content styling */
 main {
     padding: 2rem;
 }
@@ -126,7 +125,7 @@ footer {
     height: var(--footer-height);
 }
 
-/* Social icons styles */
+/* Social media icons styling within footer */
 .social-icons {
     display: flex;
     justify-content: center;
@@ -137,19 +136,10 @@ footer {
     color: white;
 }
 
-/* Swiper Gallery styles */
+/* Swiper Gallery styles for image sliders */
 .swiper {
-    width: 100%; /* Full width of the parent container */
-    max-width: none; /* Allows the swiper to take as much space as available */
-    height: 400px;
-}
-
-.swiper-slide img {
-    width: auto; /* Adjust the width automatically */
-    max-width: 100%; /* Ensure the image does not exceed the container width */
-    max-height: 500px;  
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px;
+    width: 100%;                      /* Full width of the parent container */
+    height: 400px;                    /* Fixed height for consistency */
 }
 
 .swiper-slide img {
@@ -158,15 +148,12 @@ footer {
     border-radius: 10px;
 }
 
-/* Navigation buttons within swiper */
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--primary-color);
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
     padding: 10px;
-    margin: 0 10px;
-    cursor: pointer;
 }
 
 .swiper-pagination {
@@ -180,23 +167,22 @@ footer {
     height: 4px;
 }
 
-/* Typography for headings */
+/* Typography styling for headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
 
-/* General button styling */
+/* Generic button-like styling for interactive elements */
 button, .button-like {
     background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-    transition: background-color var(--transition-speed), transform var(--transition-speed), box-shadow var(--transition-speed);
     border-radius: 4px;
 }
 
-/* Section-specific styles for layout and shadows */
+/* Generic section styling */
 section {
     display: flex;
     flex-direction: column;
@@ -205,24 +191,22 @@ section {
     margin: 20px 0;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #features {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Styling for titles in sections */
 section h2 {
     font-size: 2em;
     margin-bottom: 20px;
 }
 
-/* Paragraph spacing within sections */
 section p {
     margin-bottom: 10px;
 }
 
-/* List styles within features section */
 section ul {
     list-style-type: none;
     padding: 0;
@@ -232,16 +216,10 @@ section ul li {
     margin-bottom: 10px;
 }
 
-section ul li strong {
-    color: var(--primary-color);
-}
-
 ul li i {
     margin-right: 8px;
-    color: var(--primary-color);
 }
 
-/* Testimonial specific styling */
 .testimonial {
     display: flex;
     flex-direction: column;
@@ -258,10 +236,9 @@ ul li i {
     height: auto;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-    display: block; /* Ensures the image is block-level for centering */
-    margin-left: auto; /* Centers the image horizontally */
-    margin-right: auto; /* Centers the image horizontally */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .testimonial p {
@@ -269,8 +246,8 @@ ul li i {
 }
 
 .testimonial-star-rating {
-    color: gold; /* Gold color for stars */
-    font-size: 20px; /* Larger size for better visibility */
+    color: gold;
+    font-size: 20px;
 }
 
 .testimonial-carousel {
@@ -278,7 +255,6 @@ ul li i {
     padding: 20px;
 }
 
-/* Hover and focus styles for interactive elements */
 button:hover, .button-like:hover,
 button:focus, .button-like:focus {
     background-color: var(--hover-color);
@@ -286,7 +262,6 @@ button:focus, .button-like:focus {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Hero section specific styles */
 .hero {
     margin: 2rem 0;
     padding: 2rem;
@@ -303,18 +278,16 @@ button:focus, .button-like:focus {
     }
 }
 
-/* Sticky footer */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-  }
-  
-  main {
-    flex: 1;
-  } 
+}
 
-/* Additional styles for larger screens */
+main {
+    flex: 1;
+}
+
 @media (min-width: 992px) {
     header {
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -329,7 +302,6 @@ body {
     background-color: var(--primary-color);
     color: white;
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    /* Other styling ... */
   }
   
   .nav-links a:hover, .nav-links a:focus,
@@ -342,7 +314,6 @@ body {
   }
 }
 
-/*Styling for jitsi iframe*/
 #jitsi-iframe-container {
     display: flex;
     justify-content: center;
@@ -358,10 +329,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2 #guides {
-    text-align: center;
 }
 
 .hamburger.active, .nav-links.active {
