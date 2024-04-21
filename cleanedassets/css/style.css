@@ -338,6 +338,7 @@ button:focus, .button-like:focus {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    clip-path: inset(50%);  /* Using clip-path to replace deprecated clip */
+    white-space: nowrap;    /* Ensuring text doesn't wrap */
     border: 0;
 }
