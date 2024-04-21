@@ -1,22 +1,16 @@
-// Initializes the web application when the DOM content is fully loaded
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', function() {
     initializeTestimonials();
     initializeImageSlider();
 });
 
 // Function to initialize the testimonials with autoplay functionality
 function initializeTestimonials() {
-    const carousel = document.getElementById("testimonialCarousel");
-    carousel.setAttribute("aria-live", "polite");
+    const carousel = document.getElementById('testimonialCarousel');
+    carousel.setAttribute('aria-live', 'polite');
 
-    fetchTestimonials();
-}
-
-// Fetches testimonials from a JSON file and processes them
-function fetchTestimonials() {
-    fetch("testimonials.json")
-        .then((response) => response.json())
-        .then((testimonials) => {
+    fetch('testimonials.json')
+        .then(response => response.json())
+        .then(testimonials => {
             testimonials.forEach((testimonial, index) => {
                 const testimonialElement = createTestimonialElement(testimonial, index);
                 carousel.appendChild(testimonialElement);
@@ -30,11 +24,11 @@ function fetchTestimonials() {
                 updateTestimonialsDisplay(testimonials, currentIndex);
             }, autoplayInterval);
 
-            // Event listeners for pausing and resuming autoplay on user interaction
-            carousel.addEventListener("mouseenter", pauseAutoplay);
-            carousel.addEventListener("mouseleave", resumeAutoplay);
-            carousel.addEventListener("focusin", pauseAutoplay);
-            carousel.addEventListener("focusout", resumeAutoplay);
+            // Pause on hover or focus
+            carousel.addEventListener('mouseenter', pauseAutoplay);
+            carousel.addEventListener('mouseleave', resumeAutoplay);
+            carousel.addEventListener('focusin', pauseAutoplay);
+            carousel.addEventListener('focusout', resumeAutoplay);
 
             function pauseAutoplay() {
                 clearInterval(autoplay);
@@ -47,13 +41,13 @@ function fetchTestimonials() {
                 }, autoplayInterval);
             }
         })
-        .catch((error) => console.error("Error fetching testimonials:", error));
+        .catch(error => console.error('Error fetching testimonials:', error));
 }
 
-// Creates a new testimonial HTML element
+// Function to create testimonial HTML element
 function createTestimonialElement(testimonial, index) {
-    const element = document.createElement("div");
-    element.className = "testimonial";
+    const element = document.createElement('div');
+    element.className = 'testimonial';
     element.id = `testimonial-${index}`;
     element.innerHTML = `
         <div class="testimonial-star-rating">${generateStars(testimonial.rating)}</div>
@@ -64,35 +58,35 @@ function createTestimonialElement(testimonial, index) {
     return element;
 }
 
-// Generates star ratings for testimonials
+// Function to generate star ratings for testimonials
 function generateStars(rating) {
     return '★'.repeat(rating) + '☆'.repeat(5 - rating);
 }
 
-// Updates the display of testimonials based on the current index
+// Function to update the display of testimonials based on the current index
 function updateTestimonialsDisplay(testimonials, currentIndex) {
     testimonials.forEach((_, i) => {
         const testimonialElement = document.getElementById(`testimonial-${i}`);
-        testimonialElement.style.display = "none"; // Hide all testimonials
+        testimonialElement.style.display = 'none'; // Hide all testimonials
     });
     const currentTestimonialElement = document.getElementById(`testimonial-${currentIndex}`);
-    currentTestimonialElement.style.display = "block"; // Show only the current testimonial
+    currentTestimonialElement.style.display = 'block'; // Show only the current testimonial
 }
 
-// Initializes the image slider using the Swiper library
+// Function to initialize the image slider with Swiper
 function initializeImageSlider() {
-    new Swiper(".swiper", {
+    new Swiper('.swiper', {
         loop: true,
         pagination: {
-            el: ".swiper-pagination",
+            el: '.swiper-pagination',
             clickable: true,
         },
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
         },
         scrollbar: {
-            el: ".swiper-scrollbar",
+            el: '.swiper-scrollbar',
         },
         breakpoints: {
             320: {
