@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
+
 <body>
     <!-- Header section -->
     <header>
@@ -31,19 +33,25 @@
                 <li><a href="search.html"><i class="fas fa-search"></i> Find Professionals</a></li>
                 <li><a href="diy-guides.html"><i class="fas fa-tools"></i> DIY Guides</a></li>
                 <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login/Register</a></li>
-            </ul>                 
+            </ul>
         </nav>
     </header>
 
     <!-- Main Content -->
     <main>
-            <div id="map-container">
-                <div id="map" class="map"></div>
-            </div>
-            <div id="list-container">
-                <ul id="professionals-list" class="professionals-list"></ul>
-            </div>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search professionals (e.g., plumber, London)"
+                aria-label="Search input">
+            <button id="search-button">Search</button>
+        </div>
+        <div id="map-container">
+            <div id="map" class="map" aria-label="Map"></div>
+        </div>
+        <div id="list-container">
+            <ul id="professionals-list" class="professionals-list" aria-label="Professionals list"></ul>
+        </div>
     </main>
+
 
     <!-- Footer -->
     <footer>
@@ -71,7 +79,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
     <script src="assets/js/search.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 
 </html>
-
