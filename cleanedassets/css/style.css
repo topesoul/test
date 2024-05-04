@@ -118,6 +118,11 @@ header {
     }
 }
 
+/* Prevents scrolling when the mobile nav is open */
+.no-scroll {
+    overflow: hidden;
+}
+
 /* Main content styling for accessibility and ease of reading */
 main {
     padding: 2rem;
