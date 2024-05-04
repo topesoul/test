@@ -6,10 +6,13 @@ const TestimonialManager = (function() {
     let isPlaying = true;  // Assume autoplay starts active
 
     document.addEventListener("DOMContentLoaded", function() {
-        initializeTestimonials();
-        setupTestimonialControls();
+        const carousel = document.getElementById("testimonialCarousel");
+        if (carousel) {  // Check if the carousel element exists
+            initializeTestimonials();
+            setupTestimonialControls();
+        }
     });
-
+    
     function initializeTestimonials() {
         const carousel = document.getElementById("testimonialCarousel");
         carousel.setAttribute("aria-live", "polite");
@@ -22,7 +25,7 @@ const TestimonialManager = (function() {
                     carousel.appendChild(testimonialElement);
                 });
                 updateTestimonialsDisplay(0);  // Initialize with the first testimonial
-                autoplayInterval = startAutoplay(3000);  // Start autoplay with a default delay
+                autoplayInterval = startAutoplay();  // Start autoplay
             })
             .catch(error => {
                 console.error("Error fetching testimonials:", error);
@@ -52,11 +55,11 @@ const TestimonialManager = (function() {
         });
     }
 
-    function startAutoplay(delay) {
+    function startAutoplay() {
         return setInterval(() => {
             currentIndex = (currentIndex + 1) % testimonials.length;
             updateTestimonialsDisplay(currentIndex);
-        }, delay);
+        }, 3000);  // Autoplay interval set to 3 seconds
     }
 
     function setupTestimonialControls() {
@@ -72,7 +75,7 @@ const TestimonialManager = (function() {
                 pauseIcon.style.display = "none";
                 playIcon.style.display = "inline-block";
             } else {
-                autoplayInterval = startAutoplay(3000);
+                autoplayInterval = startAutoplay();
                 buttonText.textContent = "Pause Testimonials";
                 pauseIcon.style.display = "inline-block";
                 playIcon.style.display = "none";
@@ -94,7 +97,7 @@ const TestimonialManager = (function() {
                 pauseIcon.style.display = "none";
                 playIcon.style.display = "inline-block";
             } else {
-                autoplayInterval = startAutoplay(3000);
+                autoplayInterval = startAutoplay();
                 buttonText.textContent = "Pause Testimonials";
                 pauseIcon.style.display = "inline-block";
                 playIcon.style.display = "none";
@@ -150,7 +153,10 @@ function setupHamburgerMenu() {
 // IIFE for the Swiper initialization - separate from the other functionalities for clarity
 const ImageSlider = (function() {
     document.addEventListener("DOMContentLoaded", function() {
-        initializeImageSlider();
+        // Check if the .swiper element exists before initializing the image slider
+        if (document.querySelector(".swiper")) {
+            initializeImageSlider();
+        }
     });
 
     // Initializes the image slider using the Swiper library
