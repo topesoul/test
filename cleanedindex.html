@@ -91,8 +91,13 @@
     <div class="testimonial-carousel" id="testimonialCarousel" tabindex="0">
         <!-- Testimonials to be dynamically inserted here -->
     </div>
-    <button onclick="toggleAutoplay()">Pause/Play Testimonials</button>
+    <button id="toggleAutoplayBtn" aria-label="Pause or play testimonials">
+        <i class="fas fa-pause" id="pauseIcon"></i>
+        <i class="fas fa-play" id="playIcon" style="display: none;"></i>
+        <span id="buttonText">Pause Testimonials</span>
+    </button>    
 </section>
+
 
     </main>
 
