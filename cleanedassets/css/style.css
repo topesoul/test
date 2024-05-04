@@ -84,6 +84,11 @@ header {
     padding: 0.5rem 1rem;
 }
 
+/* Specific style for active navigation link */
+.nav-links a.active {
+    background-color: var(--hover-color); /* Changes background to hover color for active link */
+}
+
 .nav-links a:hover, .nav-links a:focus {
     background-color: var(--hover-color);
     border-radius: 4px;
@@ -369,3 +374,16 @@ button:focus, .button-like:focus {
 .professionals-list li:last-child {
     border-bottom: none;
 }
+#search-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#search-input {
+    padding: 8px;
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}
+
