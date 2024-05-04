@@ -347,3 +347,25 @@ button:focus, .button-like:focus {
     white-space: nowrap;    /* Ensuring text doesn't wrap */
     border: 0;
 }
+
+/* Map container styling */
+.map {
+    height: 400px;
+    width: 100%;
+}
+
+/* Professionals list styling */
+.professionals-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.professionals-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.professionals-list li:last-child {
+    border-bottom: none;
+}
