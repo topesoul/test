@@ -1,54 +1,78 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Define user and room details
-    const userName = 'User'; // Normally you would pull this from user session data
-    const roomName = 'HomeViseRoom_' + new Date().getTime(); // Unique room name for each session
+document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const professionalId = urlParams.get("professional");
+    const professionalInfoSection = document.getElementById("professional-info");
+    const messageForm = document.getElementById("consultation-form");
 
-    // Define options for Jitsi Meet API
-    const options = {
-        roomName: roomName,
-        width: '100%',
-        height: '100%',
-        parentNode: document.querySelector('#jitsi-iframe-container'),
-        userInfo: {
-            displayName: userName
-        },
-        interfaceConfigOverwrite: {
-            SHOW_JITSI_WATERMARK: false,
-            SHOW_WATERMARK_FOR_GUESTS: false,
-            DEFAULT_BACKGROUND: '#ffffff',
-            DEFAULT_REMOTE_DISPLAY_NAME: 'Guest',
-            TOOLBAR_BUTTONS: [
-                'microphone', 'camera', 'closedcaptions', 'desktop', 'fullscreen',
-                'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
-                'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
-                'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
-                'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone',
-                'security'
-            ],
-            SETTINGS_SECTIONS: [ 'devices', 'language', 'moderator', 'profile', 'calendar' ]
-        },
-        configOverwrite: {
-            disableSimulcast: false,
-            background: '#ffffff'
+    // Load professionals data from JSON and display the relevant professional
+    fetch("professionals.json")
+        .then(response => response.json())
+        .then(data => {
+            const professional = data.professionals.find(prof => prof.id === parseInt(professionalId));
+            if (professional) {
+                displayProfessionalInfo(professional);
+            } else {
+                professionalInfoSection.innerHTML = "<p>Professional not found. Please try again.</p>";
+            }
+        })
+        .catch(error => console.error("Error loading professionals data:", error));
+
+    // Display professional information
+    function displayProfessionalInfo(professional) {
+        professionalInfoSection.innerHTML = `
+            <h2>${professional.name} - ${professional.specialty}</h2>
+            <p><strong>Location:</strong> ${professional.location.city}</p>
+            <p><strong>Description:</strong> ${professional.description}</p>
+            <p><strong>Contact:</strong> <a href="mailto:${professional.contact}">${professional.contact}</a></p>
+        `;
+        loadMessages(professional.id);
+    }
+
+    // Load previous messages from Local Storage
+    function loadMessages(professionalId) {
+        const messagesSection = document.getElementById("messages-section");
+        const messages = JSON.parse(localStorage.getItem(`messages-${professionalId}`)) || [];
+        messagesSection.innerHTML = messages.map(msg => `<p><strong>${msg.sender}:</strong> ${msg.text}</p>`).join('');
+    }
+
+    // Save a new message to Local Storage
+    function saveMessage(professionalId, message) {
+        const messages = JSON.parse(localStorage.getItem(`messages-${professionalId}`)) || [];
+        messages.push(message);
+        localStorage.setItem(`messages-${professionalId}`, JSON.stringify(messages));
+    }
+
+    // Handle consultation form submission
+    messageForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const message = document.getElementById("message").value;
+
+        const currentUser = getLoggedInUser();
+        if (!currentUser) {
+            alert("Please log in to send a consultation request.");
+            return;
         }
-    };
 
-    // Initialize the Jitsi Meet API
-    const api = new JitsiMeetExternalAPI('meet.jit.si', options);
+        // Construct the message and save it to Local Storage
+        const newMessage = {
+            sender: currentUser.email,
+            text: `Consultation requested on ${date} at ${time}.\nMessage: ${message}`
+        };
+        saveMessage(professionalId, newMessage);
 
-    // Optional: Handle API events as needed
-    api.addEventListeners({
-        participantLeft: function() {
-            console.log('A participant has left the room.');
-        },
-        videoConferenceJoined: function() {
-            console.log('You have joined the video conference.');
-        },
-        videoConferenceLeft: function() {
-            console.log('You have left the video conference.');
-        },
-        readyToClose: function() {
-            console.log('The conference is about to be closed.');
-        }
+        // Reload the messages section
+        loadMessages(professionalId);
     });
 });
+
+// Function to get the currently logged-in user from local storage
+function getLoggedInUser() {
+    const email = localStorage.getItem('loggedInUser');
+    if (email) {
+        const user = localStorage.getItem(email);
+        return user ? JSON.parse(user) : null;
+    }
+    return null;
+}
