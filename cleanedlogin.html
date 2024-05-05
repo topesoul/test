@@ -29,7 +29,6 @@
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="search.html"><i class="fas fa-search"></i> Find Professionals</a></li>
                 <li><a href="diy-guides.html"><i class="fas fa-tools"></i> DIY Guides</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
                 <li><a href="login.html" class="active"><i class="fas fa-sign-in-alt"></i> Login/Register</a></li>
             </ul>                 
         </nav>
@@ -38,22 +37,20 @@
     <!-- Main Content -->
     <main>
         <h1>Login or Register</h1>
-        <div id="login-image">
-            <img src="assets/images/pexels-tima-miroshnichenko-consulting.jpg" alt="Consulting Image">
-        </div>
-        <section>
+        <section class="login-section">
             <h2>Login</h2>
-            <form>
+            <form id="login-form" class="auth-form">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit">Login</button>
+                <a href="#" id="forgot-password-link">Forgot Password?</a>
             </form>
         </section>
-        <section>
+        <section class="register-section">
             <h2>Register</h2>
-            <form>
+            <form id="register-form" class="auth-form">
                 <label for="new-email">Email:</label>
                 <input type="email" id="new-email" name="new-email" required>
                 <label for="new-password">Password:</label>
@@ -61,15 +58,37 @@
                 <button type="submit">Register</button>
             </form>
         </section>
+
+        <!-- Modal for login/register confirmation -->
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-auth-modal" class="close">&times;</span>
+                <h2>Welcome</h2>
+                <p id="auth-modal-message"></p>
+            </div>
+        </div>
+
+        <!-- Forgot Password Modal -->
+        <div id="forgot-password-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-forgot-password-modal" class="close">&times;</span>
+                <h2>Forgot Password</h2>
+                <p id="forgot-password-message">Enter your email to receive a new password:</p>
+                <form id="forgot-password-form" class="auth-form">
+                    <label for="forgot-password-email">Email:</label>
+                    <input type="email" id="forgot-password-email" name="forgot-password-email" required>
+                    <button type="submit">Send New Password</button>
+                </form>
+            </div>
+        </div>
     </main>
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-nav">
                 <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+                <a href="search.html">Find Professionals</a>
+                <a href="diy-guides.html">DIY Guides</a>
             </div>
             <div class="footer-contact">
                 <p>Contact us at <a href="mailto:info@homevise.com">info@homevise.com</a></p>
@@ -78,16 +97,17 @@
                 <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/topeakingbala" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="footer-legal">
-            <p>© HomeVise 2024. All rights reserved.</p>
+            <p>© HomeVise 2024. All rights reserved. Developed by <a href="https://www.linkedin.com/in/topeakingbala" target="_blank">Temitope Akingbala</a></p>
         </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="assets/js/login.js" defer></script>
     <script src="assets/js/script.js" defer></script>
 </body>
 </html>
