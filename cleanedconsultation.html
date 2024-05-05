@@ -4,18 +4,11 @@
     <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultation Room | HomeVise</title>
+    <title>Consultation | HomeVise</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap' rel='stylesheet'>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css"/>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css"/>
-
-    <!-- Jitsi Meet API -->
-    <script src="https://meet.jit.si/external_api.js"></script>
 </head>
 <body>
     <!-- Header section -->
@@ -36,27 +29,37 @@
                 <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="search.html"><i class="fas fa-search"></i> Find Professionals</a></li>
                 <li><a href="diy-guides.html"><i class="fas fa-tools"></i> DIY Guides</a></li>
-                <li><a href="about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
                 <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login/Register</a></li>
             </ul>                 
         </nav>
-        <h1>HomeVise Consultation Room</h1>
     </header>
 
     <!-- Main Content -->
     <main>
-        <div id="jitsi-iframe-container">
-            <iframe id="jitsi-iframe" src="https://meet.jit.si/HomeViseUniqueRoomName"></iframe>
-        </div>
-    </main>    
+        <h1>Request Consultation</h1>
+        <section id="professional-info">
+            <!-- Professional details will be populated here -->
+        </section>
+        <section class="consultation-section">
+            <h2>Book Your Consultation</h2>
+            <form id="consultation-form" class="consultation-form">
+                <label for="date">Preferred Date:</label>
+                <input type="date" id="date" name="date" required>
+                <label for="time">Preferred Time:</label>
+                <input type="time" id="time" name="time" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Request Consultation</button>
+            </form>
+        </section>
+    </main>
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-nav">
                 <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="privacy.html">Privacy Policy</a>
-                <a href="terms.html">Terms of Service</a>
+                <a href="diy-guides.html">DIY Guides</a>
+                <a href="login.html">Login/Register</a>
             </div>
             <div class="footer-contact">
                 <p>Contact us at <a href="mailto:info@homevise.com">info@homevise.com</a></p>
@@ -65,19 +68,17 @@
                 <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
                 <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.linkedin.com/in/topeakingbala" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
         <div class="footer-legal">
-            <p>© HomeVise 2024. All rights reserved.</p>
+            <p>© HomeVise 2024. All rights reserved. Developed by <a href="https://www.linkedin.com/in/topeakingbala" target="_blank">Temitope Akingbala</a>.</p>
         </div>
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
-    <script src="js/consultation.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="assets/js/consultation.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
 </body>
 </html>
