@@ -365,10 +365,10 @@ button:focus, .button-like:focus {
     padding: 0;
     margin-top: 20px;
 }
-
-.professionals-list li {
+#professionals-list li {
     padding: 10px;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
 }
 
 .professionals-list li:last-child {
