@@ -6,21 +6,28 @@ let suggestions = [];
 let currentUser = null;
 
 // Function to initialize the application
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Initialize the map
     initMap();
-    
+
     // Load professionals data
     loadProfessionals();
-    
+
     // Retrieve the currently logged-in user from local storage
     currentUser = getLoggedInUser();
 
     // Add event listener for search button click
-    document.getElementById('search-button').addEventListener('click', () => filterProfessionals());
+    document.getElementById('search-button').addEventListener('click', () => {
+        const query = document.getElementById('search-input').value;
+        if (!query) {
+            alert('Please enter a search term.');
+        } else {
+            filterProfessionals(query);
+        }
+    });
 
     // Add event listener for search input to show suggestions and filter professionals in real-time
-    document.getElementById('search-input').addEventListener('input', function(event) {
+    document.getElementById('search-input').addEventListener('input', function (event) {
         const query = event.target.value;
         showSuggestions(query);
         filterProfessionals(query);
@@ -31,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function initMap() {
     // Set the view of the map
     map = L.map('map').setView([54.3781, -3.4360], 6); // Centred over the UK
-    
+
     // Add tile layer to the map
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -63,12 +70,12 @@ function updateMapWithProfessionals(professionals) {
                 ${getConsultationButton(prof.id)}
             `);
         marker.addTo(map);
-        markers.push({data: prof, marker: marker});
+        markers.push({ data: prof, marker: marker });
     });
 
     // Adjust the map view based on filtered professionals
     if (markers.length > 0) {
-        const bounds = L.latLngBounds(markers.map(({marker}) => marker.getLatLng()));
+        const bounds = L.latLngBounds(markers.map(({ marker }) => marker.getLatLng()));
         map.fitBounds(bounds);
     } else {
         map.setView([54.3781, -3.4360], 6); // Default UK view
@@ -88,14 +95,9 @@ function updateListWithProfessionals(professionals) {
         listItem.innerHTML = `
             <strong>${prof.name}</strong> - ${prof.specialty}, ${prof.location.city}<br>
             <em>${prof.description}</em><br>
-            <a href="mailto:${prof.contact}">${prof.contact}</a><br>
             ${getConsultationButton(prof.id)}
         `;
         list.appendChild(listItem);
-
-        listItem.addEventListener('click', function() {
-            map.flyTo([prof.location.coordinates.lat, prof.location.coordinates.lng], 13);
-        });
     });
 }
 
@@ -107,7 +109,7 @@ function updateSuggestions(professionals) {
 // Function to show suggestions based on user input (optional)
 function showSuggestions(query) {
     const searchTerm = query.toLowerCase();
-    const filteredSuggestions = suggestions.filter(suggestion => 
+    const filteredSuggestions = suggestions.filter(suggestion =>
         suggestion.toLowerCase().includes(searchTerm));
 
     // TODO: Create an autocomplete dropdown UI for the filtered suggestions
@@ -115,7 +117,7 @@ function showSuggestions(query) {
 
 // Function to clear markers
 function clearMarkers() {
-    markers.forEach(({marker}) => map.removeLayer(marker));
+    markers.forEach(({ marker }) => map.removeLayer(marker));
     markers = [];
 }
 
@@ -146,4 +148,5 @@ function getConsultationButton(professionalId) {
     if (currentUser) {
         return `<a href="consultation.html?professional=${professionalId}" class="button-like">Request Consultation</a>`;
     }
-    return `<a href="login.html?redirect=consultation.html?professional=${professionalId}" class
+    return `<a href="login.html?redirect=consultation.html?professional=${professionalId}" class="button-like">Login to Request Consultation</a>`;
+}
