@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
         const registeredUser = localStorage.getItem(email);
 
         if (registeredUser && JSON.parse(registeredUser).password === password) {
-            displayAuthModal(`Welcome back, ${email}! You are now logged in.`);
+            localStorage.setItem("loggedInUser", email);
+            const redirectUrl = new URLSearchParams(window.location.search).get("redirect");
+            const message = `Welcome back, ${email}! You are now logged in.`;
+            displayAuthModal(message, redirectUrl || "index.html");
         } else {
             displayAuthModal("Invalid login credentials. Please try again.");
         }
@@ -24,11 +27,12 @@ document.addEventListener("DOMContentLoaded", function() {
             displayAuthModal("This email is already registered. Please log in instead.");
         } else {
             localStorage.setItem(email, JSON.stringify({ password: password }));
-            displayAuthModal(`Thank you for registering, ${email}! You can now log in.`);
+            localStorage.setItem("loggedInUser", email);
+            displayAuthModal(`Thank you for registering, ${email}! You can now log in.`, "index.html");
         }
     });
 
-    // Handle Forgot Password Form Submission
+    // Forgot Password Form Submission
     document.getElementById("forgot-password-form").addEventListener("submit", function(event) {
         event.preventDefault();
         const email = document.getElementById("forgot-password-email").value;
@@ -59,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     // Display Auth Modal
-    function displayAuthModal(message) {
+    function displayAuthModal(message, redirectUrl) {
         const modalContainer = document.getElementById("auth-modal");
         const modalMessage = document.getElementById("auth-modal-message");
         modalMessage.textContent = message;
@@ -68,7 +72,13 @@ document.addEventListener("DOMContentLoaded", function() {
         window.onclick = function(event) {
             if (event.target === modalContainer) {
                 modalContainer.style.display = "none";
+                if (redirectUrl) window.location.href = redirectUrl;
             }
+        };
+
+        document.getElementById("close-auth-modal").onclick = function() {
+            modalContainer.style.display = "none";
+            if (redirectUrl) window.location.href = redirectUrl;
         };
     }
 
