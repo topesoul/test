@@ -505,3 +505,46 @@ button:focus, .button-like:focus {
     font-size: 14px; /* Adjust size as needed */
 }
 
+/* Uses existing color, spacing, and typography settings */
+.consultation-section {
+    background-color: var(--background-color); 
+    padding: 20px;
+    margin-top: 20px; /* Adds space between sections */
+}
+
+.consultation-section h2 {
+    color: var(--primary-color, #30C9C6); /* Ensuring the heading stands out */
+}
+
+.consultation-section img {
+    width: 100%;  /* Responsive image sizing */
+    height: auto;
+    margin-bottom: 20px; /* Space between image and form */
+}
+
+#consultation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#consultation-form input[type="text"],
+#consultation-form textarea {
+    padding: 10px;
+    margin-bottom: 10px; /* Space between form elements */
+    border: 1px solid var(--secondary-color, #207178); /* Border color */
+    border-radius: 4px; /* Rounded corners */
+}
+
+#consultation-form button {
+    background-color: var(--primary-color, #30C9C6);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; /* Hand cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+#consultation-form button:hover {
+    background-color: var(--hover-color, #3C91E6); /* Darker shade on hover */
+}
