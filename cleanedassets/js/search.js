@@ -5,145 +5,128 @@ let professionalsData = [];
 let suggestions = [];
 let currentUser = null;
 
-// Function to initialize the application
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize the map
+    // Initialize map and fetch professionals data
     initMap();
-
-    // Load professionals data
     loadProfessionals();
 
-    // Retrieve the currently logged-in user from local storage
+    // Retrieve the currently logged-in user
     currentUser = getLoggedInUser();
 
-    // Add event listener for search button click
-    document.getElementById('search-button').addEventListener('click', () => {
-        const query = document.getElementById('search-input').value;
-        if (!query) {
-            alert('Please enter a search term.');
-        } else {
-            filterProfessionals(query);
-        }
-    });
-
-    // Add event listener for search input to show suggestions and filter professionals in real-time
-    document.getElementById('search-input').addEventListener('input', function (event) {
-        const query = event.target.value;
-        showSuggestions(query);
-        filterProfessionals(query);
-    });
+    // Attach event listeners to search input and button
+    document.getElementById('search-input').addEventListener('input', handleSearchInput);
+    document.getElementById('search-button').addEventListener('click', executeSearch);
 });
 
-// Function to initialize the map
 function initMap() {
-    // Set the view of the map
-    map = L.map('map').setView([54.3781, -3.4360], 6); // Centred over the UK
-
-    // Add tile layer to the map
+    // Initialize Leaflet map
+    map = L.map('map').setView([54.3781, -3.4360], 6);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 }
 
-// Function to load professionals from a JSON source
 function loadProfessionals() {
+    // Fetch professionals data from JSON file
     fetch('professionals.json')
         .then(response => response.json())
         .then(data => {
             professionalsData = data.professionals;
             updateMapWithProfessionals(professionalsData);
             updateListWithProfessionals(professionalsData);
-            updateSuggestions(professionalsData);
         })
         .catch(error => console.error('Error loading the professionals data:', error));
 }
 
-// Function to update the map with professionals data
+function handleSearchInput(event) {
+    const query = event.target.value;
+    updateSuggestions(query);
+    filterProfessionals(query);
+}
+
+function executeSearch() {
+    const query = document.getElementById('search-input').value;
+    if (!query) alert('Please enter a search term.');
+    filterProfessionals(query);
+}
+
 function updateMapWithProfessionals(professionals) {
-    clearMarkers(); // Clear existing markers
+    clearMarkers();
     professionals.forEach(prof => {
         const marker = L.marker([prof.location.coordinates.lat, prof.location.coordinates.lng])
-            .bindPopup(`
-                <strong>${prof.name}</strong> - ${prof.specialty}, ${prof.location.city}<br>
-                <em>${prof.description}</em><br>
-                ${getConsultationButton(prof.id)}
-            `);
+            .bindPopup(`<strong>${prof.name}</strong> - ${prof.specialty}, ${prof.location.city}`);
         marker.addTo(map);
         markers.push({ data: prof, marker: marker });
     });
-
-    // Adjust the map view based on filtered professionals
-    if (markers.length > 0) {
-        const bounds = L.latLngBounds(markers.map(({ marker }) => marker.getLatLng()));
-        map.fitBounds(bounds);
-    } else {
-        map.setView([54.3781, -3.4360], 6); // Default UK view
-    }
+    adjustMapView();
 }
 
-// Function to update the list with professionals data
 function updateListWithProfessionals(professionals) {
     const list = document.getElementById('professionals-list');
     list.innerHTML = '';
-    if (professionals.length === 0) {
-        list.innerHTML = '<li>No professionals match your search criteria. Please try another keyword.</li>';
-        return;
-    }
     professionals.forEach(prof => {
         const listItem = document.createElement('li');
-        listItem.innerHTML = `
-            <strong>${prof.name}</strong> - ${prof.specialty}, ${prof.location.city}<br>
-            <em>${prof.description}</em><br>
-            ${getConsultationButton(prof.id)}
-        `;
+        listItem.innerHTML = `<strong>${prof.name}</strong> - ${prof.specialty}, ${prof.location.city}<br><em>${prof.description}</em><br>${getConsultationButton(prof.id)}`;
         list.appendChild(listItem);
     });
 }
 
-// Function to update the suggestions with professionals data
-function updateSuggestions(professionals) {
-    suggestions = professionals.map(prof => `${prof.name}, ${prof.specialty}, ${prof.location.city}`);
+function updateSuggestions(query) {
+    const suggestionsDropdown = document.getElementById('suggestions-dropdown');
+    suggestionsDropdown.innerHTML = '';
+
+    if (query.trim() !== '') {
+        const filteredSuggestions = professionalsData.filter(prof =>
+            prof.name.toLowerCase().includes(query.toLowerCase()) ||
+            prof.specialty.toLowerCase().includes(query.toLowerCase()) ||
+            prof.location.city.toLowerCase().includes(query.toLowerCase()));
+
+        filteredSuggestions.forEach(prof => {
+            const suggestionItem = document.createElement('div');
+            suggestionItem.textContent = `${prof.name} - ${prof.specialty}, ${prof.location.city}`;
+            suggestionItem.className = 'suggestion-item';
+            suggestionItem.onclick = () => {
+                document.getElementById('search-input').value = prof.name;
+                suggestionsDropdown.style.display = 'none';
+                filterProfessionals(prof.name);
+            };
+            suggestionsDropdown.appendChild(suggestionItem);
+        });
+        suggestionsDropdown.style.display = 'block';
+    } else {
+        suggestionsDropdown.style.display = 'none';
+    }
 }
 
-// Function to show suggestions based on user input (optional)
-function showSuggestions(query) {
-    const searchTerm = query.toLowerCase();
-    const filteredSuggestions = suggestions.filter(suggestion =>
-        suggestion.toLowerCase().includes(searchTerm));
-
-    // TODO: Create an autocomplete dropdown UI for the filtered suggestions
+function filterProfessionals(query) {
+    const filteredProfessionals = professionalsData.filter(prof =>
+        prof.name.toLowerCase().includes(query.toLowerCase()) ||
+        prof.specialty.toLowerCase().includes(query.toLowerCase()) ||
+        prof.location.city.toLowerCase().includes(query.toLowerCase()));
+    updateMapWithProfessionals(filteredProfessionals);
+    updateListWithProfessionals(filteredProfessionals);
 }
 
-// Function to clear markers
 function clearMarkers() {
     markers.forEach(({ marker }) => map.removeLayer(marker));
     markers = [];
 }
 
-// Function to filter professionals based on search input
-function filterProfessionals(query) {
-    const searchTerm = query || document.getElementById('search-input').value.toLowerCase();
-    const filteredProfessionals = professionalsData.filter(prof =>
-        prof.name.toLowerCase().includes(searchTerm) ||
-        prof.specialty.toLowerCase().includes(searchTerm) ||
-        prof.location.city.toLowerCase().includes(searchTerm));
-
-    updateMapWithProfessionals(filteredProfessionals);
-    updateListWithProfessionals(filteredProfessionals);
+function adjustMapView() {
+    if (markers.length > 0) {
+        const bounds = L.latLngBounds(markers.map(({ marker }) => marker.getLatLng()));
+        map.fitBounds(bounds);
+    } else {
+        map.setView([54.3781, -3.4360], 6);
+    }
 }
 
-// Function to get the currently logged-in user from local storage
 function getLoggedInUser() {
     const email = localStorage.getItem('loggedInUser');
-    if (email) {
-        const user = localStorage.getItem(email);
-        return user ? JSON.parse(user) : null;
-    }
-    return null;
+    return email ? JSON.parse(localStorage.getItem(email)) : null;
 }
 
-// Function to get a consultation button based on the user's login status
 function getConsultationButton(professionalId) {
     if (currentUser) {
         return `<a href="consultation.html?professional=${professionalId}" class="button-like">Request Consultation</a>`;
