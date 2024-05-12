@@ -146,13 +146,13 @@ footer {
 }
 
 /* Social media icons styling within footer */
-.social-icons {
+.footer-social {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
 
-.social-icons a {
+.footer-social a {
     color: white;
 }
 
