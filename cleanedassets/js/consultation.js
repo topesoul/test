@@ -1,5 +1,5 @@
-// Ensure that the script is executed after the entire document is fully loaded
 document.addEventListener("DOMContentLoaded", function() {
+    // Initialize Flatpickr for the date and time inputs
     flatpickr("#datetime", {
         enableTime: true,
         dateFormat: "Y-m-d H:i",
@@ -7,61 +7,71 @@ document.addEventListener("DOMContentLoaded", function() {
         time_24hr: true,
         disable: [
             function(date) {
+                // Disable Sundays
                 return (date.getDay() === 0);
             }
-        ],
-        onChange: function(selectedDates, dateStr, instance) {
-            console.log("Selected date is: " + dateStr);
-        }
+        ]
     });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
+    // Check if a professional is selected from the URL parameters
     const professionalInfoSection = document.getElementById("professional-info");
     const urlParams = new URLSearchParams(window.location.search);
     const professionalId = urlParams.get("professional");
 
-    if (!professionalId) {
+    // Fetch professional data and display it
+    if (professionalId) {
+        fetch("professionals.json")
+            .then(response => response.json())
+            .then(data => {
+                const professional = data.professionals.find(prof => prof.id === parseInt(professionalId));
+                if (professional) {
+                    professionalInfoSection.innerHTML = `<h2>${professional.name} - ${professional.specialty}</h2>
+                    <p><strong>Location:</strong> ${professional.location.city}</p>
+                    <p><strong>Description:</strong> ${professional.description}</p>`;
+                } else {
+                    professionalInfoSection.innerHTML = "<p>Professional not found. Please select another professional from the search page.</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error loading professionals data:", error);
+                professionalInfoSection.innerHTML = "<p>Error loading data. Please try again later.</p>";
+            });
+    } else {
         professionalInfoSection.innerHTML = "<p>Please select a professional from the search page to book a consultation.</p>";
-        return;
     }
 
-    fetch("professionals.json")
-        .then(response => response.json())
-        .then(data => {
-            const professional = data.professionals.find(prof => prof.id === parseInt(professionalId));
-            if (professional) {
-                displayProfessionalInfo(professional);
-                setupDateTimePicker(professional);
-            } else {
-                professionalInfoSection.innerHTML = "<p>Professional not found. Please select another professional from the search page.</p>";
-            }
-        })
-        .catch(error => {
-            console.error("Error loading professionals data:", error);
-            professionalInfoSection.innerHTML = "<p>Error loading data. Please try again later.</p>";
-        });
-
-    function displayProfessionalInfo(professional) {
-        professionalInfoSection.innerHTML = `<h2>${professional.name} - ${professional.specialty}</h2><p><strong>Location:</strong> ${professional.location.city}</p><p><strong>Description:</strong> ${professional.description}</p>`;
-    }
-
-    function setupDateTimePicker(professional) {
-        flatpickr("#datetime", {
-            enableTime: true,
-            minDate: "today",
-            dateFormat: "Y-m-d H:i",
-            disable: professional.unavailableDates || [],
-            onChange: function(selectedDates, dateStr, instance) {
-                console.log("Selected date is: " + dateStr);
-            }
-        });
-    }
-
-    document.getElementById('consultation-form').addEventListener('submit', function(event) {
+    // Form submission handling
+    const form = document.getElementById('consultation-form');
+    form.addEventListener('submit', function(event) {
         event.preventDefault();
+
+        // Check user login status
+        if (!isUserLoggedIn()) {
+            alert("You must be logged in to book a consultation.");
+            window.location.href = 'login.html'; // Redirect to the login page
+            return;
+        }
+
+        // Validate that a professional is selected
+        if (!professionalId) {
+            alert("Please select a professional first.");
+            return;
+        }
+
+        // Validate form inputs
         const datetime = document.getElementById('datetime').value;
         const message = document.getElementById('message').value;
+        if (!datetime) {
+            alert("Please select a date and time for your consultation.");
+            return;
+        }
+
         console.log("Booking confirmed for: " + datetime + " with message: " + message);
+        alert("Your consultation has been booked!");
     });
 });
+
+// Simulated function to check user login status
+function isUserLoggedIn() {
+    return localStorage.getItem("isLoggedIn") === "true";
+}
