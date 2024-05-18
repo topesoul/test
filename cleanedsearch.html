@@ -35,20 +35,21 @@
         </nav>
     </header>
 
-<!-- Main Content -->
-<main>
-    <h1>Find Professionals Near You</h1>
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="Search professionals (e.g., plumber, London)" aria-label="Search input">
-        <button id="search-button">Search</button>
-    </div>       
-    <div id="map-container">
-        <div id="map" class="map" aria-label="Map"></div>
-    </div>
-    <div id="list-container">
-        <ul id="professionals-list" class="professionals-list" aria-label="Professionals list"></ul>
-    </div>
-</main>
+    <!-- Main Content -->
+    <main>
+        <h1>Find Professionals Near You</h1>
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search professionals (e.g., plumber, London)" aria-label="Search input">
+            <button id="search-button">Search</button>
+            <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
+        </div>       
+        <div id="map-container">
+            <div id="map" class="map" aria-label="Map"></div>
+        </div>
+        <div id="list-container">
+            <ul id="professionals-list" class="professionals-list" aria-label="Professionals list"></ul>
+        </div>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -74,8 +75,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
-    <script src="assets/js/search.js" defer></script>
-    <script src="assets/js/script.js" defer></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="assets/js/search.js"></script>
 </body>
 </html>
