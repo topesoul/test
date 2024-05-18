@@ -18,6 +18,8 @@
         "bierner.markdown-preview-github-styles",
         "gydunhn.vsc-essentials-core"
 
+        "bierner.markdown-preview-github-styles",
+        "jabacchetta.vscode-essentials"
       ],
       "settings": {
         "files.exclude":{
@@ -110,3 +112,4 @@
 
   "remoteUser": "codeany"
 }
+
