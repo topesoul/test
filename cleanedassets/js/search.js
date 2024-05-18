@@ -47,7 +47,10 @@ function handleSearchInput(event) {
 
 function executeSearch() {
     const query = document.getElementById('search-input').value;
-    if (!query) alert('Please enter a search term.');
+    if (!query) {
+        alert('Please enter a search term.');
+        return;
+    }
     filterProfessionals(query);
 }
 
@@ -70,6 +73,10 @@ function updateListWithProfessionals(professionals) {
         listItem.innerHTML = `<strong>${prof.name}</strong> - ${prof.specialty}, ${prof.location.city}<br><em>${prof.description}</em><br>${getConsultationButton(prof.id)}`;
         list.appendChild(listItem);
     });
+
+    if (professionals.length === 0) {
+        list.innerHTML = '<li>No professionals found. Please try a different search term.</li>';
+    }
 }
 
 function updateSuggestions(query) {
@@ -93,7 +100,8 @@ function updateSuggestions(query) {
             };
             suggestionsDropdown.appendChild(suggestionItem);
         });
-        suggestionsDropdown.style.display = 'block';
+
+        suggestionsDropdown.style.display = filteredSuggestions.length > 0 ? 'block' : 'none';
     } else {
         suggestionsDropdown.style.display = 'none';
     }
