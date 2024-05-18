@@ -1,5 +1,5 @@
 /* Importing Google Fonts with performance optimization */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 /* Root variable definitions for consistent theming across the application */
 :root {
@@ -51,6 +51,8 @@ header {
     color: white;
     padding: 1rem 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;  /* Ensure the header is positioned correctly for z-index */
+    z-index: 10;  /* Ensure header stays above other content */
 }
 
 /* Logo section within the header */
@@ -100,14 +102,15 @@ header {
     cursor: pointer;
     font-size: 2rem;
     color: white;
+    position: relative; /* Ensure it respects z-index */
+    z-index: 20; /* Make sure it stays above other elements */
 }
 
 /* Responsive navigation for devices with max-width of 768px */
 @media (max-width: 768px) {
     .hamburger {
         display: block;
-        position: relative;
-        z-index: 1000; /* Ensures it's above most other elements */
+        padding: 10px 20px;
     }
 
     .nav-links {
@@ -118,6 +121,7 @@ header {
         flex-direction: column;
         background-color: var(--primary-color);
         display: none;
+        z-index: 15; /* Ensure it stays above other content but below hamburger */
     }
 
     .nav-links.active {
@@ -143,6 +147,7 @@ footer {
     padding: 1rem 0;
     position: relative;
     height: var(--footer-height);
+    z-index: 5; /* Ensure footer stays below header and nav */
 }
 
 /* Social media icons styling within footer */
@@ -300,37 +305,20 @@ button:focus, .button-like:focus {
         transition: all 0.3s ease;
     }
 
-.nav-links a, button {
-    background-color: var(--primary-color);
-    color: white;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-  }
+    .nav-links a, button {
+        background-color: var(--primary-color);
+        color: white;
+        transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
   
-  .nav-links a:hover, .nav-links a:focus,
-  button:hover, button:focus {
-    background-color: var(--hover-color);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    color: white;
-    padding: 0.5rem 1.5rem;
-  }
-}
-
-#jitsi-iframe-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    background-color: #f5f5f5;
-}
-
-#jitsi-iframe {
-    max-width: 1200px;
-    width: 100%;
-    height: 80vh;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    .nav-links a:hover, .nav-links a:focus,
+    button:hover, button:focus {
+        background-color: var(--hover-color);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        color: white;
+        padding: 0.5rem 1.5rem;
+    }
 }
 
 .hamburger.active, .nav-links.active {
@@ -361,9 +349,10 @@ button:focus, .button-like:focus {
     width: 100%;
 }
 
-.map {
-    height: 400px;
-    width: 100%;
+#map-container, #search-container {
+    padding: 10px 20px;
+    position: relative;
+    z-index: 1;  /* Ensure these elements stay below the nav */
 }
 
 /* Professionals list styling */
@@ -372,6 +361,7 @@ button:focus, .button-like:focus {
     padding: 0;
     margin-top: 20px;
 }
+
 #professionals-list li {
     padding: 10px;
     border: 1px solid #ccc;
@@ -386,7 +376,7 @@ button:focus, .button-like:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px; /* Adjust as needed */
+    margin-bottom: 20px;  
 }
 
 #search-input {
@@ -396,7 +386,7 @@ button:focus, .button-like:focus {
 }
 
 #search-button {
-    margin-left: 10px; /* Adjust as needed */
+    margin-left: 10px; 
 }
 
 /* Modal styles for login, registration, and forgot password */
@@ -502,7 +492,7 @@ button:focus, .button-like:focus {
 
 .leaflet-popup-content {
     color: #333; /* Darker text for better readability */
-    font-size: 14px; /* Adjust size as needed */
+    font-size: 14px; 
 }
 
 /* Uses existing color, spacing, and typography settings */
@@ -547,4 +537,21 @@ button:focus, .button-like:focus {
 
 #consultation-form button:hover {
     background-color: var(--hover-color, #3C91E6); /* Darker shade on hover */
+}
+
+/* Styles for the suggestions dropdown */
+.suggestions-dropdown {
+    position: absolute;
+    background-color: #fff; /* White background */
+    border: 1px solid #ccc; /* Light gray border */
+    max-height: 200px; /* Max height, to avoid overflow */
+}
+
+.suggestion-item {
+    padding: 10px; /* Padding for items */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0; /* Light gray background on hover */
 }
