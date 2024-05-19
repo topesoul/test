@@ -1,54 +1,76 @@
-document.addEventListener("DOMContentLoaded", function() {
+/*global document, flatpickr, fetch, console, alert,
+localStorage, window, URLSearchParams */
+
+document.addEventListener("DOMContentLoaded", function () {
     // Initialize Flatpickr for the date and time inputs
     flatpickr("#datetime", {
-        enableTime: true,
-        dateFormat: "Y-m-d H:i",
-        minDate: "today",
-        time_24hr: true,
         disable: [
-            function(date) {
+            function (date) {
                 // Disable Sundays
                 return (date.getDay() === 0);
             }
-        ]
+        ],
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        minDate: "today",
+        time_24hr: true
     });
 
     // Check if a professional is selected from the URL parameters
-    const professionalInfoSection = document.getElementById("professional-info");
+    const professionalInfoSection = document.getElementById(
+        "professional-info"
+    );
     const urlParams = new URLSearchParams(window.location.search);
     const professionalId = urlParams.get("professional");
 
     // Fetch professional data and display it
     if (professionalId) {
         fetch("professionals.json")
-            .then(response => response.json())
-            .then(data => {
-                const professional = data.professionals.find(prof => prof.id === parseInt(professionalId));
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                const professional = data.professionals.find(function (prof) {
+                    return prof.id === parseInt(professionalId, 10);
+                });
                 if (professional) {
-                    professionalInfoSection.innerHTML = `<h2>${professional.name} - ${professional.specialty}</h2>
-                    <p><strong>Location:</strong> ${professional.location.city}</p>
-                    <p><strong>Description:</strong> ${professional.description}</p>`;
+                    professionalInfoSection.innerHTML = (
+                        "<h2>" + professional.name + " - " +
+                        professional.specialty + "</h2>" +
+                        "<p><strong>Location:</strong> " +
+                        professional.location.city + "</p>" +
+                        "<p><strong>Description:</strong> " +
+                        professional.description + "</p>"
+                    );
                 } else {
-                    professionalInfoSection.innerHTML = "<p>Professional not found. Please select another professional from the search page.</p>";
+                    professionalInfoSection.innerHTML = (
+                        "<p>Professional not found. Please select another " +
+                        "professional from the search page.</p>"
+                    );
                 }
             })
-            .catch(error => {
+            .catch(function (error) {
                 console.error("Error loading professionals data:", error);
-                professionalInfoSection.innerHTML = "<p>Error loading data. Please try again later.</p>";
+                professionalInfoSection.innerHTML = (
+                    "<p>Error loading data. Please try again later.</p>"
+                );
             });
     } else {
-        professionalInfoSection.innerHTML = "<p>Please select a professional from the search page to book a consultation.</p>";
+        professionalInfoSection.innerHTML = (
+            "<p>Please select a professional from the search page to book a " +
+            "consultation.</p>"
+        );
     }
 
     // Form submission handling
-    const form = document.getElementById('consultation-form');
-    form.addEventListener('submit', function(event) {
+    const form = document.getElementById("consultation-form");
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
 
         // Check user login status
         if (!isUserLoggedIn()) {
             alert("You must be logged in to book a consultation.");
-            window.location.href = 'login.html'; // Redirect to the login page
+            window.location.href = "login.html"; // Redirect to the login page
             return;
         }
 
@@ -59,19 +81,24 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         // Validate form inputs
-        const datetime = document.getElementById('datetime').value;
-        const message = document.getElementById('message').value;
+        const datetime = document.getElementById("datetime").value;
+        const message = document.getElementById("message").value;
         if (!datetime) {
             alert("Please select a date and time for your consultation.");
             return;
         }
 
-        console.log("Booking confirmed for: " + datetime + " with message: " + message);
+        console.log(
+            "Booking confirmed for: " + datetime +
+            " with message: " + message
+        );
         alert("Your consultation has been booked!");
     });
 });
 
-// Simulated function to check user login status
+/*
+ * Simulated function to check user login status
+ */
 function isUserLoggedIn() {
     return localStorage.getItem("isLoggedIn") === "true";
 }
