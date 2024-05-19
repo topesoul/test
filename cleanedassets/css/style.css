@@ -338,8 +338,7 @@ button:focus, .button-like:focus {
     padding: 0;
     margin: -1px;
     overflow: hidden;
-    clip-path: inset(50%);  /* Using clip-path to replace deprecated clip */
-    white-space: nowrap;    /* Ensuring text doesn't wrap */
+    clip: rect(0, 0, 0, 0);
     border: 0;
 }
 
@@ -347,10 +346,13 @@ button:focus, .button-like:focus {
 .map {
     height: 400px;
     width: 100%;
+    position: relative; /* Make sure the map has a relative position */
+    z-index: 1; /* Lower z-index to ensure suggestions appear above it */
 }
 
 #map-container, #search-container {
     padding: 10px 20px;
+    margin-top: 10px;
     position: relative;
     z-index: 1;  /* Ensure these elements stay below the nav */
 }
@@ -539,12 +541,26 @@ button:focus, .button-like:focus {
     background-color: var(--hover-color, #3C91E6); /* Darker shade on hover */
 }
 
+/* Ensure the parent container has a proper stacking context */
+#search-container {
+    position: relative; /* Relative positioning for absolute child elements */
+    z-index: 2; /* Ensure this container has a higher z-index than the map */
+}
+
 /* Styles for the suggestions dropdown */
 .suggestions-dropdown {
-    position: absolute;
+    position: absolute; /* Absolute positioning to place the dropdown below the input */
     background-color: #fff; /* White background */
     border: 1px solid #ccc; /* Light gray border */
-    max-height: 200px; /* Max height, to avoid overflow */
+    max-height: 150px; /* Adjust max height */
+    overflow-y: auto; /* Ensure content is scrollable if it overflows */
+    width: 100%; /* Match width of the input field */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for better visibility */
+    box-sizing: border-box; /* Include padding and border in the width */
+    z-index: 9999; /* Ensure it appears above other elements */
+    top: calc(100% + 5px); /* Position below the input field with a small margin */
+    left: 0; /* Align with the input field */
+    display: none; /* Hidden by default */
 }
 
 .suggestion-item {
@@ -554,4 +570,17 @@ button:focus, .button-like:focus {
 
 .suggestion-item:hover {
     background-color: #f0f0f0; /* Light gray background on hover */
+}
+
+/* Media query for smaller devices */
+@media (max-width: 480px) {
+    .suggestions-dropdown {
+        max-height: 200px; /* Increase max height on mobile */
+        font-size: 14px; /* Adjust font size for readability */
+        overflow-y: scroll; /* Allow scrolling */
+    }
+
+    .suggestion-item {
+        padding: 8px; /* Reduce padding for smaller screens */
+    }
 }
