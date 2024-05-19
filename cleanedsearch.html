@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta tags -->
     <meta charset="UTF-8">
@@ -9,8 +10,9 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
+
 <body>
     <!-- Header section -->
     <header>
@@ -22,7 +24,8 @@
                 </a>
             </div>
             <!-- Hamburger Menu -->
-            <button class="hamburger" aria-controls="navigation-menu" aria-expanded="false" aria-label="Navigation Menu">
+            <button class="hamburger" aria-controls="navigation-menu" aria-expanded="false"
+                aria-label="Navigation Menu">
                 <i class="fas fa-bars"></i>
             </button>
             <!-- Navigation Links -->
@@ -31,20 +34,21 @@
                 <li><a href="search.html"><i class="fas fa-search"></i> Find Professionals</a></li>
                 <li><a href="diy-guides.html"><i class="fas fa-tools"></i> DIY Guides</a></li>
                 <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login/Register</a></li>
-            </ul>                 
+            </ul>
         </nav>
     </header>
 
     <!-- Main Content -->
     <main>
         <h1>Find Professionals Near You</h1>
-        <div id="search-container" style="position: relative;">
-            <input type="text" id="search-input" placeholder="Search professionals (e.g., plumber, London)" aria-label="Search input">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search professionals (e.g., plumber, London)"
+                aria-label="Search input">
             <button id="search-button">Search</button>
             <div id="suggestions-dropdown" class="suggestions-dropdown"></div>
-        </div>       
+        </div>
         <div id="map-container">
-            <div id="map" class="map" aria-label="Map"></div>
+            <div id="map" class="map"></div>
         </div>
         <div id="list-container">
             <ul id="professionals-list" class="professionals-list" aria-label="Professionals list"></ul>
@@ -56,21 +60,26 @@
         <div class="footer-content">
             <div class="footer-nav">
                 <a href="index.html">Home</a>
+                <a href="search.html">Find Professionals</a>
                 <a href="diy-guides.html">DIY Guides</a>
-                <a href="login.html">Login/Register</a>
             </div>
             <div class="footer-contact">
                 <p>Contact us at <a href="mailto:info@homevise.com">info@homevise.com</a></p>
             </div>
             <div class="footer-social">
-                <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/topeakingbala" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"
+                        aria-hidden="true"></i><span class="sr-only">Facebook</span></a>
+                <a href="https://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"
+                        aria-hidden="true"></i><span class="sr-only">Twitter</span></a>
+                <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"
+                        aria-hidden="true"></i><span class="sr-only">Instagram</span></a>
+                <a href="https://www.linkedin.com/in/topeakingbala" target="_blank" title="LinkedIn"><i
+                        class="fab fa-linkedin-in" aria-hidden="true"></i><span class="sr-only">LinkedIn</span></a>
             </div>
         </div>
         <div class="footer-legal">
-            <p>© HomeVise 2024. All rights reserved. Developed by <a href="https://www.linkedin.com/in/topeakingbala" target="_blank">Temitope Akingbala</a>.</p>
+            <p>© HomeVise 2024. All rights reserved. Developed by <a href="https://www.linkedin.com/in/topeakingbala"
+                    target="_blank">Temitope Akingbala</a></p>
         </div>
     </footer>
 
@@ -79,4 +88,5 @@
     <script src="assets/js/search.js"></script>
     <script src="assets/js/script.js" defer></script>
 </body>
+
 </html>
