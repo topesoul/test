@@ -1,0 +1,228 @@
+{
+  "professionals": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "specialty": "Plumber",
+      "location": {
+        "city": "London",
+        "coordinates": {
+          "lat": 51.5074,
+          "lng": -0.1278
+        }
+      },
+      "description": "A certified plumber with over 15 years of experience in residential plumbing repairs.",
+      "contact": "john.doe@plumbinglondon.co.uk"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "specialty": "Electrician",
+      "location": {
+        "city": "Manchester",
+        "coordinates": {
+          "lat": 53.4808,
+          "lng": -2.2426
+        }
+      },
+      "description": "Expert electrician specializing in domestic wiring and energy-saving installations.",
+      "contact": "jane.smith@manchesterelectrics.com"
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "specialty": "Carpenter",
+      "location": {
+        "city": "Bristol",
+        "coordinates": {
+          "lat": 51.4545,
+          "lng": -2.5879
+        }
+      },
+      "description": "Professional carpenter focusing on bespoke furniture and wooden structures.",
+      "contact": "alice.johnson@bristolcarpenters.com"
+    },
+    {
+      "id": 4,
+      "name": "Bob Williams",
+      "specialty": "Painter",
+      "location": {
+        "city": "Liverpool",
+        "coordinates": {
+          "lat": 53.4084,
+          "lng": -2.9916
+        }
+      },
+      "description": "Skilled painter providing high-quality interior and exterior painting services.",
+      "contact": "bob.williams@liverpoolpainters.co.uk"
+    },
+    {
+      "id": 5,
+      "name": "Charlie Brown",
+      "specialty": "Plasterer",
+      "location": {
+        "city": "Leeds",
+        "coordinates": {
+          "lat": 53.8008,
+          "lng": -1.5491
+        }
+      },
+      "description": "Professional plasterer offering decorative plastering and repair services.",
+      "contact": "charlie.brown@leedsplasterers.com"
+    },
+    {
+      "id": 6,
+      "name": "David Davis",
+      "specialty": "Bricklayer",
+      "location": {
+        "city": "Sheffield",
+        "coordinates": {
+          "lat": 53.3811,
+          "lng": -1.4701
+        }
+      },
+      "description": "Experienced bricklayer specializing in retaining walls and garden structures.",
+      "contact": "david.davis@sheffieldbricklayers.co.uk"
+    },
+    {
+      "id": 7,
+      "name": "Eve Evans",
+      "specialty": "Roofer",
+      "location": {
+        "city": "Edinburgh",
+        "coordinates": {
+          "lat": 55.9533,
+          "lng": -3.1883
+        }
+      },
+      "description": "Certified roofer with expertise in slate, tile, and flat roofing systems.",
+      "contact": "eve.evans@edinburghroofers.co.uk"
+    },
+    {
+      "id": 8,
+      "name": "Frank Foster",
+      "specialty": "Tiler",
+      "location": {
+        "city": "Glasgow",
+        "coordinates": {
+          "lat": 55.8642,
+          "lng": -4.2518
+        }
+      },
+      "description": "Professional tiler providing bathroom and kitchen tiling services.",
+      "contact": "frank.foster@glasgowtilers.com"
+    },
+    {
+      "id": 9,
+      "name": "Grace Green",
+      "specialty": "Decorator",
+      "location": {
+        "city": "Birmingham",
+        "coordinates": {
+          "lat": 52.4862,
+          "lng": -1.8904
+        }
+      },
+      "description": "Interior decorator specializing in modern and contemporary design.",
+      "contact": "grace.green@birminghamdecorators.co.uk"
+    },
+    {
+      "id": 10,
+      "name": "Harry Hill",
+      "specialty": "Joiner",
+      "location": {
+        "city": "Newcastle",
+        "coordinates": {
+          "lat": 54.9784,
+          "lng": -1.6174
+        }
+      },
+      "description": "Experienced joiner focusing on custom joinery and wooden fittings.",
+      "contact": "harry.hill@newcastlejoiners.com"
+    },
+    {
+      "id": 11,
+      "name": "Ivy Irving",
+      "specialty": "Glazier",
+      "location": {
+        "city": "Nottingham",
+        "coordinates": {
+          "lat": 52.9548,
+          "lng": -1.1581
+        }
+      },
+      "description": "Certified glazier specializing in double glazing and window repairs.",
+      "contact": "ivy.irving@nottingham-glaziers.co.uk"
+    },
+    {
+      "id": 12,
+      "name": "Jack Johnson",
+      "specialty": "Landscaper",
+      "location": {
+        "city": "Leicester",
+        "coordinates": {
+          "lat": 52.6369,
+          "lng": -1.1398
+        }
+      },
+      "description": "Professional landscaper creating bespoke garden designs.",
+      "contact": "jack.johnson@leicesterlandscapers.co.uk"
+    },
+    {
+      "id": 13,
+      "name": "Katie King",
+      "specialty": "Builder",
+      "location": {
+        "city": "Coventry",
+        "coordinates": {
+          "lat": 52.4068,
+          "lng": -1.5197
+        }
+      },
+      "description": "Licensed builder specializing in new builds and extensions.",
+      "contact": "katie.king@coventrybuilders.co.uk"
+    },
+    {
+      "id": 14,
+      "name": "Larry Lloyd",
+      "specialty": "Floorer",
+      "location": {
+        "city": "Cardiff",
+        "coordinates": {
+          "lat": 51.4816,
+          "lng": -3.1791
+        }
+      },
+      "description": "Flooring specialist providing hardwood, laminate, and vinyl flooring.",
+      "contact": "larry.lloyd@cardifffloorers.co.uk"
+    },
+    {
+      "id": 15,
+      "name": "Nina North",
+      "specialty": "Architect",
+      "location": {
+        "city": "Brighton",
+        "coordinates": {
+          "lat": 50.8225,
+          "lng": -0.1372
+        }
+      },
+      "description": "Licensed architect creating contemporary designs for homes and offices.",
+      "contact": "nina.north@brightonarchitects.co.uk"
+    },
+    {
+      "id": 16,
+      "name": "Oscar Owen",
+      "specialty": "Surveyor",
+      "location": {
+        "city": "Southampton",
+        "coordinates": {
+          "lat": 50.9097,
+          "lng": -1.4044
+        }
+      },
+      "description": "Chartered surveyor offering property valuations and surveys.",
+      "contact": "oscar.owen@southamptonsurveyors.co.uk"
+    }
+  ]
+}
