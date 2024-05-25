@@ -150,13 +150,32 @@ footer {
     z-index: 5; /* Ensure footer stays below header and nav */
 }
 
-/* Social media icons styling within footer */
-.footer-social {
+.footer-content {
     display: flex;
-    justify-content: center;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Reduced gap */
 }
 
+.footer-nav {
+    display: flex;
+    gap: 10px; /* Reduced gap */
+}
+
+.footer-contact {
+    margin: 0.5rem 0; /* Adjusted margin */
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px; /* Reduced gap */
+}
+
+.footer-legal {
+    margin-top: 10px; /* Adjusted margin */
+}
+
+/* Social media icons styling within footer */
 .footer-social a {
     color: white;
 }
