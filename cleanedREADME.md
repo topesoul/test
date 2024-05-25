@@ -1,6 +1,6 @@
 # Homevise - Home Improvement Made Easy
 
-![Homevise Logo](assets/images/Homevise-logo.webp)
+![Homevise Logo](assets/images/homevise-logo.webp)
 
 ## Overview
 
@@ -90,7 +90,7 @@ Homevise uses a modern and clean aesthetic that conveys trust and professionalis
 8. **As a User**, I want to view reviews from other users, so that I can make informed decisions about which professionals to hire.
 9. **As a User**, I want to use the web application on any device, including smartphones and tablets, so that I can access the site from anywhere.
 
-![Homevise Responsive Design](tests/responsiveness/Homevise-responsiveness-image-multiple-devices.jpeg)
+![Homevise Responsive Design](tests/responsiveness/homevise-responsiveness-image-multiple-devices.jpeg)
 
 ## Features
 
@@ -194,11 +194,11 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 - **Issue**: The map popup details were crowded and not readable on smaller screens.
   - **Fix**: Adjusted CSS styles for the map popup to enhance readability.
   - **Screenshot**: 
-    ![Crowded Map Popup Details](tests/responsiveness/crowded_map_popup_details.png)
+    ![Crowded Map Popup Details](tests/responsiveness/crowded_map_popup_details.png.png)
 - **Issue**: Testimonials section overflowed its container on small screens.
   - **Fix**: Adjusted the layout and CSS for the testimonials section to ensure it fits within its container.
   - **Screenshot**: 
-    ![Testimonials Section Overflow](tests/responsiveness/testimonials_section_overflow.png)
+    ![Testimonials Section Overflow](tests/responsiveness/testimonials_section_overflow.png.png)
 
 ## Deployment
 
