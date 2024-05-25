@@ -1,16 +1,16 @@
-# HomeVise - Home Improvement Made Easy
+# Homevise - Home Improvement Made Easy
 
-![HomeVise Logo](assets/images/homevise-logo.webp)
+![Homevise Logo](assets/images/Homevise-logo.webp)
 
 ## Overview
 
-HomeVise is a comprehensive web platform designed to connect homeowners with top-tier home improvement professionals. The platform provides a range of tools and resources to help plan and execute home renovation projects efficiently. This document outlines the project's structure, features, and development guidelines.
+Homevise is a comprehensive web platform designed to connect homeowners with top-tier home improvement professionals. The platform provides a range of tools and resources to help plan and execute home renovation projects efficiently. This document outlines the project's structure, features, and development guidelines.
 
 ## Motivation
 
 ### Project Choice
 
-The idea for HomeVise emerged from my personal experience of finding it challenging to connect with reliable home improvement professionals. I recognized a gap in the market for a platform that not only facilitates these connections but also provides homeowners with the tools and resources to manage their home improvement projects effectively.
+The idea for Homevise emerged from my personal experience of finding it challenging to connect with reliable home improvement professionals. I recognized a gap in the market for a platform that not only facilitates these connections but also provides homeowners with the tools and resources to manage their home improvement projects effectively.
 
 ### Educational Context
 
@@ -50,12 +50,12 @@ This project is part of my milestone Project 2 in my coursework for the L5 Diplo
 
 ### Site Map
 
-1. **Home Page**: Introduction to HomeVise, navigation to other sections, quick access to sign up or log in.
+1. **Home Page**: Introduction to Homevise, navigation to other sections, quick access to sign up or log in.
 2. **Registration and Login**: Separate registration processes for homeowners and professionals, login page for returning users.
 3. **Professional Profiles**: Display of professional qualifications, services, and portfolio.
 4. **Consultation Booking**: Calendar-based booking system for consultations.
 5. **DIY Guides**: Collection of DIY guides and tutorials.
-6. **About Us**: Information about HomeVise, its mission, and the team behind it.
+6. **About Us**: Information about Homevise, its mission, and the team behind it.
 
 ## Skeleton Plane
 
@@ -65,11 +65,11 @@ The skeleton of the site is clean and user-focused. Attention is centered on con
 
 Below is a link to the initial draft of the wireframes created for the project, providing an initial conceptual idea of the structure and responsiveness across different devices.
 
-[HomeVise Project Wireframes](documentation/homevise_wireframes.pdf)
+[Homevise Project Wireframes](documentation/Homevise_wireframes.pdf)
 
 ## Surface Plane
 
-HomeVise uses a modern and clean aesthetic that conveys trust and professionalism. The visual design incorporates colors, typography, and imagery that resonate with the home improvement theme. Interactive elements and animations enhance the user experience without overwhelming it.
+Homevise uses a modern and clean aesthetic that conveys trust and professionalism. The visual design incorporates colors, typography, and imagery that resonate with the home improvement theme. Interactive elements and animations enhance the user experience without overwhelming it.
 
 ### Visual Design
 
@@ -90,7 +90,7 @@ HomeVise uses a modern and clean aesthetic that conveys trust and professionalis
 8. **As a User**, I want to view reviews from other users, so that I can make informed decisions about which professionals to hire.
 9. **As a User**, I want to use the web application on any device, including smartphones and tablets, so that I can access the site from anywhere.
 
-![HomeVise Responsive Design](tests/responsiveness/homevise-responsiveness-image-multiple-devices.jpeg)
+![Homevise Responsive Design](tests/responsiveness/Homevise-responsiveness-image-multiple-devices.jpeg)
 
 ## Features
 
@@ -243,7 +243,7 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 
 ## Acknowledgements
 
-Special thanks to my mentor and Code Institute for the helpful and intense tutorship. Also, I would like to acknowledge online developer communities, my friends, and peers for their advice and encouragement throughout the development of the HomeVise project.
+Special thanks to my mentor and Code Institute for the helpful and intense tutorship. Also, I would like to acknowledge online developer communities, my friends, and peers for their advice and encouragement throughout the development of the Homevise project.
 
 [https://stackoverflow.com/](https://stackoverflow.com/)
 [https://fontawesome.com/](https://fontawesome.com/)
@@ -258,7 +258,7 @@ While beginning the project, I mistakenly forked the example template from Code 
 
 ## Future Development
 
-There are several features planned for future development to enhance the functionality and user experience of HomeVise:
+There are several features planned for future development to enhance the functionality and user experience of Homevise:
 
 - **Instant Quote Generation**: Allowing users to get quick estimates for their projects.
 - **Community Forum**: Enabling users to share advice, ask questions, and discuss home improvement topics.
