@@ -1,8 +1,8 @@
-/*global document, flatpickr, fetch, console, alert,
-localStorage, window, URLSearchParams */
+/*global document, flatpickr, fetch, console, alert, localStorage, window, URLSearchParams */
 
+// Document ready event listener
 document.addEventListener("DOMContentLoaded", function () {
-    // Initialize Flatpickr for the date and time inputs
+    // Initialize Flatpickr for the date and time input with specific configurations
     flatpickr("#datetime", {
         disable: [
             function (date) {
@@ -17,13 +17,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Check if a professional is selected from the URL parameters
-    const professionalInfoSection = document.getElementById(
-        "professional-info"
-    );
+    const professionalInfoSection = document.getElementById("professional-info");
     const urlParams = new URLSearchParams(window.location.search);
     const professionalId = urlParams.get("professional");
 
-    // Fetch professional data and display it
+    // Fetch professional data and display it if a professional is selected
     if (professionalId) {
         fetch("professionals.json")
             .then(function (response) {
@@ -34,32 +32,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     return prof.id === parseInt(professionalId, 10);
                 });
                 if (professional) {
-                    professionalInfoSection.innerHTML = (
-                        "<h2>" + professional.name + " - " +
-                        professional.specialty + "</h2>" +
-                        "<p><strong>Location:</strong> " +
-                        professional.location.city + "</p>" +
-                        "<p><strong>Description:</strong> " +
-                        professional.description + "</p>"
-                    );
+                    professionalInfoSection.innerHTML = `
+                        <h2>${professional.name} - ${professional.specialty}</h2>
+                        <p><strong>Location:</strong> ${professional.location.city}</p>
+                        <p><strong>Description:</strong> ${professional.description}</p>
+                    `;
                 } else {
-                    professionalInfoSection.innerHTML = (
-                        "<p>Professional not found. Please select another " +
-                        "professional from the search page.</p>"
-                    );
+                    professionalInfoSection.innerHTML = `
+                        <p>Professional not found. Please select another professional from the search page.</p>
+                    `;
                 }
             })
             .catch(function (error) {
                 console.error("Error loading professionals data:", error);
-                professionalInfoSection.innerHTML = (
-                    "<p>Error loading data. Please try again later.</p>"
-                );
+                professionalInfoSection.innerHTML = `
+                    <p>Error loading data. Please try again later.</p>
+                `;
             });
     } else {
-        professionalInfoSection.innerHTML = (
-            "<p>Please select a professional from the search page to book a " +
-            "consultation.</p>"
-        );
+        professionalInfoSection.innerHTML = `
+            <p>Please select a professional from the search page to book a consultation.</p>
+        `;
     }
 
     // Form submission handling
@@ -88,16 +81,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        console.log(
-            "Booking confirmed for: " + datetime +
-            " with message: " + message
-        );
+        console.log(`Booking confirmed for: ${datetime} with message: ${message}`);
         alert("Your consultation has been booked!");
     });
 });
 
-/*
+/**
  * Simulated function to check user login status
+ * @returns {boolean} True if the user is logged in, false otherwise
  */
 function isUserLoggedIn() {
     return localStorage.getItem("isLoggedIn") === "true";
