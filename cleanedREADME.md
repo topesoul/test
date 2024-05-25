@@ -84,11 +84,17 @@ The project includes several key features aimed at providing a seamless user exp
 - **HTML**: Used for the basic structure of the project.
 - **CSS**: Used for styling the web pages.
 - **JavaScript**: Used for interactive elements and form validations.
+- **jQuery**: Simplifies DOM manipulation and event handling.
 - **Font Awesome**: Provides icons for the navigation and social media links.
 - **Swiper.js**: Implements the image slider functionality.
 - **Leaflet.js**: Used for the map functionality in the search page.
 - **Google Fonts**: Used for typography.
-- **jQuery**: Simplifies DOM manipulation and event handling.
+- **Flatpickr**: Provides enhanced date and time picker for booking consultations.
+- **JSHint**: Used for validating JavaScript code.
+
+### JSHint Validation
+
+During the validation of `script.js` using JSHint, it identified five unused functions. However, this is not the case. These functions are self-invoking and encapsulate the scope within the script, ensuring modularity and preventing global namespace pollution. The warning can be safely ignored as the code operates correctly and adheres to best practices.
 
 ## Testing
 
@@ -110,6 +116,7 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 - **Google Chrome Developer Tools**: Used to test responsiveness across devices.
 - **W3C Markup Validator**: Ensured there were no syntax errors in the project.
 - **W3C CSS Validator**: Ensured CSS code was error-free.
+- **JSHint**: Validated JavaScript code for potential errors and ensured adherence to best practices.
 
 ### Known Issues and Fixes
 
@@ -148,6 +155,7 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 - **Font Awesome**: For providing icons used in the project.
 - **Swiper.js**: For the image slider functionality.
 - **Leaflet.js**: For the map functionality.
+- **JSHint**: For validating JavaScript code.
 
 ### Content
 
@@ -159,7 +167,7 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 
 ### Acknowledgements
 
-Special thanks to the online developer communities and peers for their support and feedback throughout the development of the HomeVise project.
+Special thanks to my mentor and Code institute for the helpful and intense tutorship. Also, I would like to acknowledge online developer communities, my friends and peers for their advice and encouragement throughout the development of the HomeVise project.
 
 [https://stackoverflow.com/](https://stackoverflow.com/)
 [https://fontawesome.com/](https://fontawesome.com/)
