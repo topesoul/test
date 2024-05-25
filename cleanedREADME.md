@@ -14,7 +14,7 @@ The idea for HomeVise emerged from my personal experience of finding it challeng
 
 ### Educational Context
 
-This project is part of my coursework for the L5 Diploma in Web Application Development at Code Institute. The goal is to apply the knowledge and skills acquired during the course to a real-world project, demonstrating proficiency in web development, user experience design, and project management.
+This project is part of my milestone Project 2 in my coursework for the L5 Diploma in Web Application Development at Code Institute. The goal is to apply the knowledge and skills acquired during the course to a real-world project, demonstrating proficiency in web application development and user experience design.
 
 ## Strategy Plane
 
@@ -34,12 +34,14 @@ This project is part of my coursework for the L5 Diploma in Web Application Deve
 
 - **User Registration and Profiles**: Separate registration for homeowners and professionals, with profile management features.
 - **Professional Profiles and Consultation Booking**: Interactive UI for profile display and booking system.
-- **Real-Time Video Consultation**: Secure video conferencing tool for consultations.
 - **DIY Guides**: Resource library for guides and tutorials.
+- **Map Integration**: Helps users find professionals in their vicinity.
+- **Image Slider and Testimonial Slideshow**: Enhances user engagement with visual elements.
+- **Active Navigation Link and Hamburger Menu**: Improves navigation experience on the site.
 
 ### Content Requirements
 
-- Detailed professional profiles.
+- Detailed professional profiles including qualifications and specialties.
 - DIY guides and tutorials.
 - Real-time consultation scheduling.
 - User testimonials and reviews.
@@ -100,6 +102,11 @@ The project includes several key features aimed at providing a seamless user exp
 - **Professional Services**: Detailed overview of professional expertise.
 - **Contact & Engagement**: Streamlined contact section designed to foster connections between users and professionals.
 - **Captivating Hero Images**: Visual anchors that reflect the essence of home improvement services.
+- **Map Integration**: Facilitates finding professionals in the user's vicinity.
+- **Image Slider and Testimonial Slideshow**: Enhances user engagement with visual elements.
+- **User Registration and Login**: Simulated experience using JavaScript for a seamless interaction.
+- **Interactive Modals**: Used for promoting user interactions and providing feedback.
+- **Form Validations**: Implemented with JavaScript to ensure data integrity.
 
 ## Technologies Used
 
@@ -124,24 +131,24 @@ During the validation of `script.js` using JSHint, it identified five unused fun
 
 ### `consultation.js`
 
-- **Improved Code Structure**: Enhanced readability and maintainability by adopting consistent formatting practices, using template literals for dynamic HTML insertion, and uniformly declaring function expressions.
-- **Better Commenting**: Key sections are now parsimoniously commented for future reference.
-- **Enhanced Code Comprehension**: Instantiation settings for Flatpickr are logically sequenced.
+- **Improved Code Structure**: Enhanced readability and maintainability by using consistent formatting practices and template literals for dynamic HTML insertion.
+- **Commenting**: Key sections are now clearly commented for future reference.
+- **Flatpickr Initialization**: Settings are logically sequenced for better comprehension.
 
 ### `login.js`
 
-- **Improved Readability**: More consistent use of whitespace and breakdown of complex conditionals and function calls into digestible blocks.
+- **Improved Readability**: Consistent use of whitespace and breakdown of complex conditionals into simpler blocks.
 
 ### `search.js`
 
-- **Code Overhaul**: Improved readability and maintainability, detailed comments to clarify function purposes and application flow.
-- **Data Fetching**: Shifted the professionals data fetch source to a structured path ("assets/json/professionals.json").
+- **Code Overhaul**: Improved readability and maintainability, detailed comments to clarify function purposes.
+- **Data Fetching**: Structured path for professionals data ("assets/json/professionals.json").
 - **Event Listeners**: Streamlined for input and search actions, enhancing user interaction.
 
 ### General Improvements
 
 - **Modern JavaScript Syntax**: Transition to arrow functions and ES6+ features.
-- **Optimized Event Handling**: Consolidation of event listeners and more efficient handling of user interactions.
+- **Optimized Event Handling**: Consolidation of event listeners for efficiency.
 
 ## Testing
 
@@ -157,6 +164,11 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 | DIY Guides           | Display guides and tutorials correctly           | Content review              | Pass      |
 | User Authentication  | Secure login and registration                    | Login/Register test         | Pass      |
 | Cross-Browser Testing| Functionality on Chrome, Safari, and Edge        | Open site on browsers       | Pass      |
+| Map Integration      | Professionals displayed correctly on the map     | Location search test        | Pass      |
+| Testimonial Slideshow| Display testimonials and slide correctly         | Interaction test            | Pass      |
+| Image Slider         | Display images and slide correctly               | Interaction test            | Pass      |
+| Active Navigation Link| Highlight correct active link                   | Navigation test             | Pass      |
+| Hamburger Menu       | Expand/collapse correctly when triggered on mobile devices                       | Interaction test            | Pass      |
 
 ### Further Testing
 
@@ -226,7 +238,8 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 
 ### Media
 
-- Images used in the project are sourced from Pexels and personal archives.
+- Images and avatars for the testimonial section were obtained from [Limitless Designs](https://limitlessdesigns.io/avatar-illustrations/?ref=engigogo).
+- Other images used across the project are from [Pexels](https://pexels.com/).
 
 ## Acknowledgements
 
@@ -250,3 +263,4 @@ There are several features planned for future development to enhance the functio
 - **Instant Quote Generation**: Allowing users to get quick estimates for their projects.
 - **Community Forum**: Enabling users to share advice, ask questions, and discuss home improvement topics.
 - **Enhanced User Profiles**: Including additional details and customization options for both homeowners and professionals.
+- **Real-Time Video Consultation**: Secure video conferencing tool for consultations.
