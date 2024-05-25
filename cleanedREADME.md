@@ -74,10 +74,11 @@ The project includes several key features aimed at providing a seamless user exp
 - **Responsive Design**: Ensures optimal browsing experience across all devices.
 - **Responsive Navigation Bar**: Offers a frictionless navigation experience for a variety of devices.
 - **Dynamic Footer**: Establishes a strong social media presence.
-- **Engaging Music Platform & Streaming**: Integrates a user-friendly media player interface for professional profiles.
 - **Professional Services**: Detailed overview of professional expertise.
 - **Contact & Engagement**: Streamlined contact section designed to foster connections between users and professionals.
 - **Captivating Hero Images**: Visual anchors that reflect the essence of home improvement services.
+
+![HomeVise Responsive Design](tests/responsiveness/homevise-responsiveness-image-multiple-devices.jpeg)
 
 ## Technologies Used
 
@@ -122,8 +123,18 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 
 - **Issue**: Hamburger menu was being covered by the map and search containers.
   - **Fix**: Adjusted the z-index of the navigation elements to ensure the menu stays above other content.
+  - **Screenshot**: 
+    ![Obstructed Hamburger Menu](tests/responsiveness/obstructed_hamburger_navigation_menu.png)
+
 - **Issue**: Styling inconsistencies across different elements.
   - **Fix**: Unified button styles and adjusted padding/margin for consistent spacing.
+  - **Screenshot**: 
+    ![Footer Overlapping](tests/responsiveness/footer_overlapping_content.png)
+
+- **Issue**: Search input suggestions were overflowing in mobile view.
+  - **Fix**: Adjusted CSS to contain the suggestions within the viewport.
+  - **Screenshot**: 
+    ![Search Input Overflow](tests/responsiveness/search_input_suggestions_overflowing.png)
 
 ## Deployment
 
@@ -167,7 +178,7 @@ Comprehensive testing was conducted to ensure all features perform as expected a
 
 ### Acknowledgements
 
-Special thanks to my mentor and Code institute for the helpful and intense tutorship. Also, I would like to acknowledge online developer communities, my friends and peers for their advice and encouragement throughout the development of the HomeVise project.
+Special thanks to my mentor and Code Institute for the helpful and intense tutorship. Also, I would like to acknowledge online developer communities, my friends, and peers for their advice and encouragement throughout the development of the HomeVise project.
 
 [https://stackoverflow.com/](https://stackoverflow.com/)
 [https://fontawesome.com/](https://fontawesome.com/)
