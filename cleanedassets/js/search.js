@@ -26,8 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /*
  * Initialize the Leaflet map with a default view.
- * This function sets the map's initial center and zoom level,
- * and adds OpenStreetMap tile layer.
+ * Sets the map's initial center and zoom level, and adds the OpenStreetMap tile layer.
  */
 function initMap() {
     map = L.map("map").setView([54.3781, -3.4360], 6);
@@ -39,8 +38,8 @@ function initMap() {
 
 /*
  * Load professionals data from a JSON file and update the map and list.
- * This function fetches data from 'professionals.json', updates the global
- * professionalsData variable, and calls functions to update the map and list.
+ * Fetches data from 'professionals.json', updates the global professionalsData variable,
+ * and calls functions to update the map and list.
  */
 function loadProfessionals() {
     fetch("assets/json/professionals.json")
@@ -59,20 +58,16 @@ function loadProfessionals() {
 
 /*
  * Handle input events in the search box.
- * This function updates suggestions and filters professionals based on the
- * current input value.
+ * Updates suggestions and filters professionals based on the current input value.
  */
 function handleSearchInput(event) {
     const query = event.target.value;
     updateSuggestions(query);
-    // Comment out filtering here to test the button click functionality
-    // filterProfessionals(query);
 }
 
 /*
  * Execute search when the search button is clicked.
- * This function checks if the search input is not empty, and then filters
- * professionals based on the input value.
+ * Checks if the search input is not empty, and then filters professionals based on the input value.
  */
 function executeSearch() {
     const query = document.getElementById("search-input").value;
@@ -86,8 +81,8 @@ function executeSearch() {
 
 /*
  * Update the map with markers for professionals.
- * This function clears existing markers and adds new ones for each professional
- * in the given list, then adjusts the map view to fit all markers.
+ * Clears existing markers and adds new ones for each professional in the given list,
+ * then adjusts the map view to fit all markers.
  */
 function updateMapWithProfessionals(professionals) {
     clearMarkers();
@@ -110,8 +105,7 @@ function updateMapWithProfessionals(professionals) {
 
 /*
  * Update the list of professionals displayed on the page.
- * This function clears the current list and creates a new list item for each
- * professional in the given list.
+ * Clears the current list and creates a new list item for each professional in the given list.
  */
 function updateListWithProfessionals(professionals) {
     const list = document.getElementById("professionals-list");
@@ -129,16 +123,14 @@ function updateListWithProfessionals(professionals) {
 
     if (professionals.length === 0) {
         list.innerHTML = (
-            "<li>No professionals found. Please try a different search term."
-            + "</li>"
+            "<li>No professionals found. Please try a different search term." + "</li>"
         );
     }
 }
 
 /*
  * Update suggestions dropdown based on the current search query.
- * This function filters professionals based on the query and updates the
- * suggestions dropdown with matching results.
+ * Filters professionals based on the query and updates the suggestions dropdown with matching results.
  */
 function updateSuggestions(query) {
     const suggestionsDropdown = document.getElementById("suggestions-dropdown");
@@ -177,8 +169,7 @@ function updateSuggestions(query) {
 
 /*
  * Filter professionals based on the search query.
- * This function filters the global professionalsData array based on the query
- * and updates the map and list with the filtered results.
+ * Filters the global professionalsData array based on the query and updates the map and list with the filtered results.
  */
 function filterProfessionals(query) {
     console.log("Filtering professionals with query:", query); // Debug log
@@ -196,7 +187,7 @@ function filterProfessionals(query) {
 
 /*
  * Clear all markers from the map.
- * This function removes all markers currently displayed on the map.
+ * Removes all markers currently displayed on the map.
  */
 function clearMarkers() {
     markers.forEach(function (markerObj) {
@@ -207,8 +198,7 @@ function clearMarkers() {
 
 /*
  * Adjust the map view to fit all markers.
- * This function sets the map view to fit the bounds of all markers, or resets
- * to the default view if no markers are present.
+ * Sets the map view to fit the bounds of all markers, or resets to the default view if no markers are present.
  */
 function adjustMapView() {
     if (markers.length > 0) {
@@ -225,21 +215,20 @@ function adjustMapView() {
 
 /*
  * Retrieve the currently logged-in user from local storage.
- * This function gets the email of the logged-in user and returns the user data
- * from local storage.
+ * Gets the email of the logged-in user and returns the user data from local storage.
  */
 function getLoggedInUser() {
     const email = localStorage.getItem("loggedInUser");
     return (
         email ?
-        JSON.parse(localStorage.getItem(email)) :
-        null
+            JSON.parse(localStorage.getItem(email)) :
+            null
     );
 }
 
 /*
  * Generate a consultation button for a professional.
- * This function returns an HTML string for the consultation button, which
+ * Returns an HTML string for the consultation button, which
  * either links to the consultation page or prompts the user to log in.
  */
 function getConsultationButton(professionalId) {
